@@ -1,0 +1,644 @@
+.menuLink a {
+    height:16px;
+	width: 80px;
+	DISPLAY: block;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	color: #000080;
+	text-decoration: none;
+	PADDING: 10px 6px 10px 6px;
+}
+.menuLink a:hover {
+	BACKGROUND: #3b5998;
+	COLOR: white;
+	TEXT-DECORATION: none;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+}
+﻿/*页首*/
+body {
+	margin: 0px 5px 10px 0px;
+}
+#lifebook {
+	/*margin: 0px auto;*/
+	WIDTH: 770px;
+}
+#header {
+	float: right;
+	width: 765px;
+	height: 30px;
+	background: #3B5998;
+	border-bottom:#6D84B4 2px solid;
+}
+#logo {
+	width: 200px;
+	float: left;
+}
+#topMenu {
+	width: 500px;
+	float: left;
+	text-align: left;
+	COLOR: white;
+	TEXT-DECORATION: none;
+	font-size:12px;
+	font-weight:bold;
+	margin-top:5px;
+}
+#topMenu li{
+	float:left;
+	margin-left:8px;
+}
+#topMenu li a{
+	border:1px #5E6DB1 solid;
+	DISPLAY: block;
+	color:white;
+	padding:3px 10px 1px 10px;
+	background:#5E6DB1;
+	height:15px;
+	white-space:nowrap;
+}
+#topMenu li a:hover{
+	color:white;
+	background:#3B5998;	
+	text-decoration:none;
+}
+#topMenu li a span{
+    height:5px;
+	font-family:Arial, Helvetica, sans-serif;
+	font-size:9px;
+	font-weight:bold;
+	vertical-align:top;
+}
+/*页脚*/
+#footer {
+	width: 760px;
+	text-align: right;
+	border-top: #dddddd 1px solid;
+	margin-top:5px;
+	padding: 5px 5px 5px 5px;
+	COLOR: gray;
+	TEXT-DECORATION: none;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 10px;
+	DISPLAY: block;
+}
+/*主体*/
+#body {
+	width: 770px;
+	display:block;
+}
+/*左边内容块*/
+#content {
+    display:block;
+	float: left;
+	width: 650px;
+	height: auto;
+	min-height:400px;
+	margin: 5px 0px 5px 0px;
+	padding: 0px 5px 0px 5px;
+	border-right: #eeeeee 1px solid;
+}
+/*主体右边菜单头*/
+#menuHeader {
+	float: right;
+	width: 93px;
+	padding:5px;
+	font-size:13px;
+	font-weight:bold;
+	margin-top:5px;
+	border-bottom:2px #d8dfea solid;
+}
+#menuHeader div{
+	float:left;
+}
+#menuHeader a{
+	display:inline;
+	float:right;
+}
+
+/*主体右边菜单*/
+#rightMenu {
+	float: right;
+	width: 103px;
+	padding-top: 5px;
+}
+#rightMenu img{
+	margin-right:5px;
+}
+#rightMenu ul {
+	margin: 0px 0px 10px 0px;
+	list-style: none;
+}
+#rightMenu li {
+	border-bottom: #d8dfea 1px solid;
+}
+#rightMenu .current 
+{
+	border-bottom: #6D84B4 2px solid;
+}
+#rightMenu a {
+	width: 91px;
+	DISPLAY: block;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	color: #000080;
+	text-decoration: none;
+	PADDING: 7px 6px 6px 6px;
+}
+#rightMenu a:hover {
+	BACKGROUND: #3b5998;
+	COLOR: white;
+	TEXT-DECORATION: none;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+}
+/*右边广告*/
+.ad {
+	margin-left: 5px;
+	margin-bottom: 10px;
+	padding: 5px 0px 0px 0px;
+	float: right;
+	width: 101px;
+	border-left: 1px #dddddd solid;
+	border-right: 1px #dddddd solid;
+	border-top: 1px #666666 solid;
+	border-bottom: 1px #999999 solid;
+	COLOR: #333333;
+	TEXT-DECORATION: none;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+}
+.adTitle {
+	font-weight: bold;
+	padding: 0px 5px 2px 5px;
+	margin-bottom: 5px;
+	border-bottom: 1px #dddddd solid;
+	text-align: center;
+	line-height: 18px;
+}
+.adPic {
+	text-align: center;
+	padding: 0px 5px 0px 5px;
+}
+.adPic img {
+	width: 88px;
+	border: 1px #dddddd solid;
+}
+.adContent {
+	padding: 5px 6px 5px 6px;
+}
+.adPostBy {
+	padding: 0px 5px 3px 5px;
+	color: #999999;
+}
+.adMark {
+	padding: 5px 5px 5px 5px;	
+	text-align: center;
+	background: #eeeeee;
+	width:91px;
+}
+/*时间样式*/
+.dateTime {
+	COLOR: #999999;
+	TEXT-DECORATION: none;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 10px;
+}
+/*修改按钮*/
+.imgBtnEdit{
+    float: right;
+}
+.btnEdit {
+	float: right;
+	white-space: nowrap;
+}
+.btnEdit a {
+	COLOR: #3b5998;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	text-decoration: none;
+	padding: 3px 3px 3px 3px;
+	font-weight: bold;
+}
+.btnEdit a:hover {
+	BACKGROUND: #3b5998;
+	COLOR: white;
+	TEXT-DECORATION: none;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	font-weight: bold;
+}
+.columnHeader {
+	border-top: 1px #999999 solid;
+	border-bottom: 1px #dddddd solid;
+	background-color: #eeeeee;
+}
+.columnTitle {
+	float: left;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	font-weight: bold;
+	color: #3B5998;
+	padding: 2px 0px 0px 0px;
+}
+form {
+	margin: 0px 0px 0px 0px;
+	padding: 0px 0px 0px 0px;
+}
+td {
+	COLOR: #000000;
+	TEXT-DECORATION: none;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+}
+/*链接*/
+a {
+	COLOR: #3b5998;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	text-decoration: none;
+}
+a:hover {
+	COLOR: #3b5998;
+	TEXT-DECORATION: underline;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+}
+a:visited {
+	COLOR: #3b5998;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+}
+/*搜索*/
+.searchBtn {
+	padding: 2px 3px 0px 3px;
+	height: 22px;
+	COLOR: #ffffff;
+	BORDER-RIGHT: #0e1f5b 1px solid;
+	BORDER-TOP: #d9dfea 1px solid;
+	BORDER-LEFT: #d9dfea 1px solid;
+	BORDER-BOTTOM: #0e1f5b 1px solid;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	BACKGROUND-COLOR: #3b5998;
+	float: right;
+}
+.searchInput {
+	float: left;
+	width: 123px;
+}
+/*按钮*/
+.btn {
+	padding: 2px 3px 0px 3px;
+	height: 22px;
+	COLOR: #ffffff;
+	BORDER-RIGHT: #0e1f5b 1px solid;
+	BORDER-TOP: #d9dfea 1px solid;
+	BORDER-LEFT: #d9dfea 1px solid;
+	BORDER-BOTTOM: #0e1f5b 1px solid;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	BACKGROUND-COLOR: #3b5998;
+}
+.btnRight {
+	padding: 2px 3px 0px 3px;
+	height: 22px;
+	COLOR: #ffffff;
+	BORDER-RIGHT: #0e1f5b 1px solid;
+	BORDER-TOP: #d9dfea 1px solid;
+	BORDER-LEFT: #d9dfea 1px solid;
+	BORDER-BOTTOM: #0e1f5b 1px solid;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	BACKGROUND-COLOR: #3b5998;
+	float: right;
+}
+/*IM 即时聊天*/
+#IM {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	font-weight: bold;
+	color: #000000;
+	margin-left: 5px;
+	float: right;
+	width: 200px;
+	border-left: 1px #dddddd solid;
+	border-right: 1px #dddddd solid;
+	position: absolute;
+	left: 775px;
+	top: 10px;
+	background: white;
+	visibility: hidden;
+}
+#IMTitle {
+	width: 200px;
+	padding: 5px 5px 5px 5px;
+	background: #eeeeee;
+	border-top: 1px #999999 solid;
+	border-bottom: 1px #dddddd solid;
+}
+#IMFooter {
+	float: left;
+	width: 200px;
+	padding: 5px 5px 5px 5px;
+	background: #eeeeee;
+	border-bottom: 1px #999999 solid;
+	border-top: 1px #dddddd solid;
+	text-align: right;
+}
+.IMColumn {
+	width: 100%;
+	float: left;
+	padding: 5px 5px 5px 5px;
+}
+.IMColumnTitle {
+	width: 190px;
+	background: #eeeeee;
+	padding: 5px 5px 5px 5px;
+}
+.IMList {
+	margin: 0px 0px 0px 0px;
+	list-style: none;
+}
+.IMList li {
+	float: left;
+	width: 200px;
+	border-bottom: 1px #eeeeee solid;
+}
+.IMList a {
+	DISPLAY: block;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	color: #000080;
+	PADDING: 5px 10px 5px 10px;
+	text-decoration: none;
+	font-weight: normal;
+	float: left;
+}
+.IMList a:hover {
+	BACKGROUND: #3b5998;
+	COLOR: white;
+	TEXT-DECORATION: none;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	font-weight: normal;
+}
+.IMList div {
+	float: right;
+}
+.IMColumnTitleText {
+	float: left;
+}
+.expandKey {
+	float: right;
+	display: inline;
+}
+#IMAlertPanel {
+	background: #FFFBE2;
+	border: 1px #ffe222 solid;
+	margin: 5px 5px 0px 5px;
+	width: 188px;
+	padding: 5px 5px 5px 5px;
+}
+#IMControlPanel {
+	margin: 0px 0px 0px 0px;
+	list-style: none;
+}
+#IMControlPanel li {
+	float: left;
+	width: 200px;
+	border-bottom: 1px #eeeeee solid;
+}
+#IMControlPanel a {
+	DISPLAY: block;
+	font-family: 新宋体;
+	font-size: 12px;
+	color: #000080;
+	PADDING: 5px 10px 5px 10px;
+	text-decoration: none;
+	font-weight: normal;
+}
+#IMControlPanel a:hover {
+	BACKGROUND: #3b5998;
+	COLOR: white;
+	TEXT-DECORATION: none;
+	font-family: 新宋体;
+	font-size: 12px;
+	font-weight: normal;
+}
+/*所在位置标题头*/
+#location {
+	padding: 8px 8px 0px 8px;
+	background: #6D84B4;
+	margin-bottom: 5px;
+	border-top: 2px #3B5998 solid;
+	height: 22px;
+	COLOR: white;
+	TEXT-DECORATION: none;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 14px;
+	font-weight: bold;
+}
+#location img{
+	margin-right:10px;
+}
+#location .title {
+	float: left;
+}
+#location .tabs {
+	float: right;
+	margin-top: 5px;
+}
+#location .tabs ul {
+	list-style-type: none;
+}
+#location .tabs li {
+	float: left;
+	border-top: 1px #3B5998 solid;
+	border-left: 1px #3B5998 solid;
+	border-right: 1px #3B5998 solid;
+	background: white;
+	margin-left: 5px;
+	background: #3B5998;
+}
+#location .tabs li a {
+	color: white;
+	padding: 2px 8px 2px 8px;
+}
+#location .tabs li a:hover {
+	color: #3B5998;
+	background: white;
+	text-decoration:none;
+}
+#location .tabs .currentTab {
+	padding: 2px 8px 2px 8px;
+	background: white;
+	color: #3B5998;
+	font-size: 12px;
+	font-weight: bold;
+}
+/*引导条，原控制面板*/
+#guideBar {
+	padding: 8px 8px 8px 8px;
+	border: 1px #dddddd solid;
+	background: #f9f9f9;
+	COLOR: #dddddd;
+	TEXT-DECORATION: none;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	font-weight: normal;
+	margin-bottom:10px;
+}
+#guideBar a{
+	padding: 0px 0px 0px 3px;
+}
+/*警告窗口*/
+.alertPanel {
+	background: #FFFBE2;
+	border: 1px #ffe222 solid;
+	margin: 10px auto 5px auto;
+	width: 90%;
+	padding: 10px 10px 10px 10px;
+	font-weight: bold;
+	font-size: 14px;
+	color: black;
+}
+/*分页*/
+.pager {
+	border: 1px #dddddd solid;
+	background: #f9f9f9;
+	padding: 5px 5px 5px 5px;
+	float: right;
+	margin-bottom: 5px;
+	margin-top:5px;
+}
+.pager ul {
+	list-style: none;
+	float: right;
+	margin: 0px 0px 0px 0px;
+}
+.pager li {
+	float: left;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	margin-right: 2px;
+}
+.pager a {
+	DISPLAY: block;
+	font-family: Arial, Helvetica, sans-serif;
+	color: #3b5998;
+	PADDING: 3px 3px 3px 3px;
+}
+.pager a:hover {
+	BACKGROUND: #3b5998;
+	COLOR: white;
+	TEXT-DECORATION: none;
+	font-family: Arial, Helvetica, sans-serif;
+}
+.pager .currentPage {
+	DISPLAY: block;
+	color: #000080;
+	PADDING: 3px 3px 1px 3px;
+	font-weight: bold;
+	border-bottom: 2px #000080 solid;
+}
+/*栏目头*/
+.columnHeader {
+	border-top: 1px #999999 solid;
+	border-bottom: 1px #dddddd solid;
+	background-color: #eeeeee;
+}
+/*照片列表，格子的那种就是在lifebook里用的*/
+.photoList TD {
+	PADDING: 3px 2px 3px 2px;
+	VERTICAL-ALIGN: middle;
+	WIDTH: 130px;
+	TEXT-ALIGN: center;
+	vertical-align: top;
+}
+.photoList a img {
+	BORDER: #ccc 1px solid;
+	PADDING: 5px 5px 5px 5px;
+	BACKGROUND: white;
+	WIDTH: 90px;
+}
+.photoList a:hover img {
+	BORDER: #3b5998 1px solid;
+}
+.photoList div {
+	text-align: left;
+	padding-left: 5px;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 10px;
+	font-weight: normal;
+	color: #666666;
+	margin-bottom: 5px;
+}
+/*控制面板*/
+#controlPanel {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	font-weight: normal;
+	color: #000000;
+}
+#controlPanel thead td {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 14px;
+	font-weight: bold;
+	color: #000000;
+	padding-top: 3px;
+	padding-bottom: 3px;
+	padding-left: 5px;
+	border-bottom: 1px #dddddd solid;
+}
+#controlPanel #controlPanelBtn {
+	margin-left: 0px;
+}
+#controlPanel #controlPanelBtn li {
+	float: left;
+	margin: 0px 3px 3px 0px;
+	text-align: center;
+	list-style-type: none;
+}
+#controlPanel #controlPanelBtn a {
+	width: 100px;
+	BACKGROUND: #3b5998;
+	COLOR: white;
+	TEXT-DECORATION: none;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	DISPLAY: block;
+	PADDING: 5px 5px 5px 5px;
+	border: 1px #eeeeee solid;
+}
+#controlPanel #controlPanelBtn a:hover {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	color: #000080;
+	text-decoration: none;
+	BACKGROUND: #ffffff;
+	border: 1px #666666 solid;
+}
+/*公告*/
+#bulletin {
+	font-size:12px;
+	color:#333333;
+	border:1px #dddddd solid;
+	background:#f7f7f7;
+	padding:5px;
+	margin-bottom:5px;
+}
+#bulletin #bTitle{
+	font-size:12px;
+	font-weight:bold;
+	color:black;
+	margin-bottom:3px;
+}
+#bulletin #bContent{
+	padding:5px;
+}
+.redNum{
+	font-size:10px;
+	color:red;
+	font-family: Arial, Helvetica, sans-serif;    
+}

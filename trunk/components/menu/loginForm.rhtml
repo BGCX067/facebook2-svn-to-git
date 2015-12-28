@@ -1,0 +1,18 @@
+<link rel="stylesheet" type="text/css" href="/css/index.css" />
+<%=flash[:alert]%>
+<%= form_remote_tag :update=>:loginAlertPanel,
+                    :url=>{:controller=>:user,:action => :login} %>
+<div class="login">
+	<label for="userName">· 用户名</label>
+	<%= text_field "user","username",:tabindex=>1 %>
+	<label for="password">· 密码 <a id="forgotPassword" href="index.htm">忘记？</a></label> 
+	<%= password_field "user","password",:tabindex=>2 %>	
+	<div id="loginAlertPanel"></div>
+	<%= submit_tag "登录" , :id=>"loginBtn",:tabindex=>3 %>
+</div>
+<%= end_form_tag %>
+<div class="join">
+	<a href="/user/register">现在就加入</a>
+	<br/>
+	免费使用，好处多多！
+</div>

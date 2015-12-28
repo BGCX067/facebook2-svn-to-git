@@ -1,0 +1,41 @@
+<%= form_remote_tag(:update=>"alertPanel",
+                    :url=>{:action =>:updatePassword ,:id=>@params[:id]},
+                    :complete=>"$('oldUser_password').value='';$('user_password').value='';$('user_password_confirmation').value='';")%>
+<div id="form">
+<div id="alertPanel"><%= error_messages_for :user %></div>
+<div class="subFormTitle">
+    密码修改</div>
+<div class="subFormDesc">
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+	在下面，您可以修改您的密码。密码由6-16个字符组成，请使用英文字母加数字或符号的组合密码，不能单独使用英文字母、数字或符号作为您的密码。</div>
+    <table class="subForm" cellpadding="0" cellspacing="5">
+        <tr>
+            <td align="right">
+                原密码：</td>
+            <td>
+                <%=password_field("oldUser","password",:size=>51)%>
+            </td>
+        </tr>
+        <tr>
+            <td align="right">
+                新密码：</td>
+            <td>
+                <%=password_field("user","password",:size=>51)%>
+            </td>
+        </tr>
+        <tr>
+            <td align="right">
+                确认密码：</td>
+            <td>
+                <%=password_field("user","password_confirmation",:size=>51)%>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                &nbsp;</td>
+            <td>
+                <%= submit_tag "确定修改密码" , :class=>"btn"%>
+        </tr>
+    </table>
+</div>
+<%= end_form_tag %>

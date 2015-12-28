@@ -1,0 +1,90 @@
+<%= form_remote_tag(:update=>"alertPanel",
+                   :url => { :action=>"privacyUpdate" },:id=>@params[:id]) %>
+    <div id="form">
+        <div class="subFormTitle">个人档案</div>
+        <div class="subFormDesc">在这里您可以设置您的
+            <strong>个人档案</strong>查看权限。
+        </div>
+        <table class="subForm">
+            <tr>
+                <td><%=
+                        select(:userDetail, :profilePrivacy, [  ['全部可以', 'all'],
+                        ['只有好友', 'friend'],
+                        ['只有自己', 'self']])
+%></td>
+            </tr>
+        </table>
+        <div class="subFormTitle">我的照片日记</div>
+        <div class="subFormDesc">在这里您可以设置您的
+            <strong>照片日记</strong>查看权限。
+        </div>
+        <table class="subForm">
+            <tr>
+                <td><%=
+                        select(:userDetail, :lifebookPrivacy, [ ['全部可以', 'all'],
+                        ['只有好友', 'friend'],
+                        ['只有自己', 'self']])
+%></td>
+            </tr>
+        </table>
+        <div class="subFormTitle">我的照片日记查看形式</div>
+        <div class="subFormDesc">在照片日记里，可以选定照片，使得所有的照片分选定和不选定的， 在下面你可以选择是显示选定的内容还是显示没有选定的内容。</div>
+        <table class="subForm">
+            <tr>
+                <td><%=
+                        select(:userDetail, :lifebookViewType, [['显示选定内容', 'show'],
+                        ['隐藏选定内容', 'hide']])
+%></td>
+            </tr>
+        </table>
+        <div class="subFormTitle">我的好友</div>
+        <div class="subFormDesc">在这里您可以设置您的
+            <strong>个人好友</strong>查看权限。
+        </div>
+        <table class="subForm">
+            <tr>
+                <td><%=
+                        select(:userDetail, :friendPrivacy, [['全部可以', 'all'],
+                        ['只有好友', 'friend'],
+                        ['只有自己', 'self']])
+%></td>
+            </tr>
+        </table>
+        <div class="subFormTitle">我的圈子</div>
+        <div class="subFormDesc">在这里您可以设置您所参加的
+            <strong>圈子</strong>查看权限。
+        </div>
+        <table class="subForm">
+            <tr>
+                <td><%=
+                        select(:userDetail, :groupPrivacy, [ ['全部可以', 'all'],
+                        ['只有好友', 'friend'],
+                        ['只有自己', 'self']])
+%></td>
+            </tr>
+        </table>
+        <div class="subFormTitle">我的墙壁</div>
+        <div class="subFormDesc">在这里您可以设置您的
+            <strong>墙壁</strong>查看权限。
+        </div>
+        <table class="subForm">
+            <tr>
+                <td>
+                <%=
+                    select(:userDetail, :messagePrivacy, [  ['全部可以', 'all'],
+                    ['只有好友', 'friend'],
+                    ['只有自己', 'self']])
+                %>
+                </td>
+            </tr>
+        </table>        
+        <table cellpadding="0" cellspacing="10" width="100%">
+            <tr>
+                <td><div id="alertPanel"></div></td>
+            </tr>
+            <tr>
+                <td align="center"><%= submit_tag "确定修改" , :class=>"btn" %></td>
+            </tr>
+        </table>
+    </div>
+<%= end_form_tag %>

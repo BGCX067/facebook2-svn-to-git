@@ -1,0 +1,92 @@
+<div id="myProfile">
+    <table class="columnHeader" width="100%" cellspacing="0" cellpadding="5">
+        <tr>
+            <td>
+                <div id="myName">
+                    <%=@user.username %></div>
+                <div class="btnEdit">
+                    <% if isHost %>
+                    <a href="/user/edit/<%=@params[:id]%>">修改</a>
+                    <% end %>
+                    </div>
+            </td>
+        </tr>
+    </table>
+    <table width="100%" cellspacing="5" cellpadding="0">
+        <tr>
+            <th>
+                真实姓名</th>
+            <td>
+              <%=@user.userDetail.realname %></td>
+        </tr>
+        <tr>
+            <th>
+                性 别</th>
+            <td>
+              <%=@user.userDetail.sex %></td>
+        </tr>
+        <tr>
+            <th>
+                生 日</th>
+            <td>
+                <%=@user.userDetail.birthday.year.to_s%>年
+                <%=@user.userDetail.birthday.month.to_s%>月
+                <%=@user.userDetail.birthday.day.to_s%>日
+            </td>
+        </tr>
+        <tr>
+            <th>
+                家 乡</th>
+            <td>
+             <%=@user.userDetail.hometown %></td>
+        </tr>
+        <tr>
+            <th>
+                毕业院校</th>
+            <td>
+             <%=@user.userDetail.school %></td>
+        </tr>
+        <tr>
+            <th>
+                职 业</th>
+            <td>
+                <%=@user.userDetail.job %></td>
+        </tr>
+        <tr>
+            <th>
+                星 座</th>
+            <td>
+               <%=@user.userDetail.astro %></td>
+        </tr>
+        <tr>
+            <th>
+                生 肖</th>
+            <td>
+                <%=@user.userDetail.sign %></td>
+        </tr>
+        <tr>
+            <th>
+                E-mail</th>
+            <td>
+                <%=@user.email %></td>
+        </tr>
+        <tr>
+            <th>
+                QQ号</th>
+            <td>
+                <%=@user.userDetail.qq %></td>
+        </tr>
+        <tr>
+            <th>
+                兴趣爱好</th>
+            <td>
+                <%=@user.userDetail.interest %></td>
+        </tr>
+        <tr>
+            <th>
+                自我描述</th>
+            <td>
+                <%=@user.userDetail.intro %></td>
+        </tr>
+    </table>
+</div>

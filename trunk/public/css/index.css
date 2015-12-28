@@ -1,0 +1,127 @@
+﻿/*主体左边图片*/
+#demoPic {
+	width: 650px;
+}
+.introduction {
+    font-family: 新宋体;
+	font-size: 14px;
+	font-weight:bold;
+	line-height:30px;
+	padding:50px 30px 50px 30px;
+	border: 1px #dddddd solid;
+	text-align:center;
+}
+.join {
+	float: right;
+	width: 93px;
+	padding:5px 5px 5px 5px;
+	border-top: 1px #dddddd solid;
+	border-bottom:1px #dddddd solid;
+	background:#f7f7f7;
+	COLOR: #cccccc;
+	font-family: 新宋体;
+	font-size: 12px;
+	text-align: center;
+	line-height:18px;
+	font-weight:bold;
+	margin-bottom: 5px;
+}
+/*登录警告窗口*/
+.loginAlert {
+    float:right;
+	background: #FFFBE2;
+	border: 1px #ffe222 solid;
+	margin: 5px 2px 0px 0px;
+	width: 90px;
+	padding: 5px 0px 5px 7px;
+	font-weight: bold;
+	font-size: 14px;
+	color: black;
+}
+/*登录*/
+.login {
+	float: right;
+	width: 103px;
+	padding-top: 5px;
+	padding-left: 5px;
+	padding-bottom: 5px;    
+}
+.login label {
+	DISPLAY: block;
+	PADDING-TOP: 2px;
+	PADDING-BOTTOM: 1px;
+	COLOR: gray;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	FONT-WEIGHT: bold;
+}
+.login input {
+	width: 95px;
+}
+.login #loginBtn {
+	width: 60px;
+	height: 20px;
+	margin-top: 3px;
+	margin-right: 3px;
+	COLOR: #ffffff;
+	padding-top: 2px;
+	BORDER-RIGHT: #0e1f5b 1px solid;
+	BORDER-TOP: #d9dfea 1px solid;
+	BORDER-LEFT: #d9dfea 1px solid;
+	BORDER-BOTTOM: #0e1f5b 1px solid;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	BACKGROUND-COLOR: #3b5998;
+	margin-left:20px;
+}
+.login #forgotPassword{
+	font-weight:normal;
+}
+.loginAlertPanel{
+    background: #FFFBE2;
+	border: 1px #ffe222 solid;
+	margin: 0px auto;
+	padding: 5px 5px 5px 5px;
+	font-weight: bold;
+	font-size: 12px;
+	color: black;
+	text-align:center;
+}
+/*大登陆框*/
+.big_login {
+	margin:10px auto;
+	width: 300px;
+	padding-top: 5px;
+	padding-left: 5px;
+	padding-bottom: 5px;	
+}
+.big_login label {
+	DISPLAY: block;
+	PADDING-TOP: 2px;
+	PADDING-BOTTOM: 1px;
+	COLOR: gray;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	FONT-WEIGHT: bold;
+}
+.big_login input {
+	width:300px;
+}
+.big_login #loginBtn {
+	width: 60px;
+	height: 20px;
+	margin-top:3px;
+	margin-left:245px;
+	COLOR: #ffffff;
+	padding-top: 2px;
+	BORDER-RIGHT: #0e1f5b 1px solid;
+	BORDER-TOP: #d9dfea 1px solid;
+	BORDER-LEFT: #d9dfea 1px solid;
+	BORDER-BOTTOM: #0e1f5b 1px solid;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	BACKGROUND-COLOR: #3b5998;
+}
+.big_login #forgotPassword{
+	font-weight:normal;
+}

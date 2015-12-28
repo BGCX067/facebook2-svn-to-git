@@ -1,0 +1,55 @@
+﻿#form{
+	width:500px;
+	margin:20px auto 20px auto;
+}
+#form #formTitle{
+	font-size:14px;
+	font-family: Arial, Helvetica, sans-serif;
+	font-weight:bold;
+}
+#form #formDesc{
+	font-size:12px;
+	font-family: Arial, Helvetica, sans-serif;
+	font-weight:bold;
+	color:#666666;
+	
+	border:1px #dddddd solid;
+	padding:5px;
+	background:#f7f7f7;
+	margin:5px 0px 5px 0px;
+}
+#form .subFormTitle{
+	margin:0px auto;
+	width:450px;
+	margin-top:10px;
+	border-bottom:1px #dddddd solid;
+	font-size:14px;
+	font-weight:bold;
+	color:#333333;
+}
+#form .subFormDesc{
+	font-size:12px;
+	font-family: Arial, Helvetica, sans-serif;
+	color:#333333;
+	width:430px;
+	border:1px #dddddd solid;
+	padding:5px;
+	background:#f7f7f7;
+	margin:5px auto 5px auto;
+	line-height:18px;
+}
+#form .subForm {
+	margin:0px auto;
+}
+#form .subForm th{
+	font-family: Arial, Helvetica, sans-serif;
+	text-align:right;
+	color:#999999;
+	font-size:12px;
+	vertical-align:top;
+}
+#form .subForm td{
+	font-size:12px;
+	color:#999999;
+}
+

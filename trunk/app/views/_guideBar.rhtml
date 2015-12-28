@@ -1,0 +1,6 @@
+<div id="guideBar">
+	<a href="/lifebook/list/<%=@params[:id]%>">所有照片日记</a>
+	<% if isHost %>
+	 | <a href="/lifebook/add/<%=@params[:id]%>">添加</a>
+    <% end %>
+</div>

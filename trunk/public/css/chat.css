@@ -1,0 +1,50 @@
+﻿#chat {
+	float: left;
+	width: 650px;
+	margin-top:-10px;
+}
+/*控制面板*/
+#myControlPanel {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	font-weight: normal;
+	color: #000000;
+}
+#myControlPanel thead td {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 14px;
+	font-weight: bold;
+	color: #000000;
+	padding-top: 3px;
+	padding-bottom: 3px;
+	padding-left: 5px;
+	border-bottom: 1px #dddddd solid;
+}
+#myControlPanel #controlPanelBtn{
+	margin-left:0px;
+}
+#myControlPanel #controlPanelBtn li{
+	float:left;	
+	width:112px;
+	margin:0px 3px 3px 0px;
+	text-align:center;
+	list-style-type:none;
+}
+#myControlPanel #controlPanelBtn a {
+	BACKGROUND: #3b5998;
+	COLOR: white;
+	TEXT-DECORATION: none;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	DISPLAY: block;
+	PADDING: 5px 5px 5px 5px;
+	border:1px #eeeeee solid;
+}
+#myControlPanel #controlPanelBtn a:hover {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	color: #000080;
+	text-decoration: none;
+	BACKGROUND: #ffffff;
+	border:1px #666666 solid;
+}

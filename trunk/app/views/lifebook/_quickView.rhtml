@@ -1,0 +1,151 @@
+<div class="myLifebook">
+	<table class="columnHeader" width="100%" cellspacing="0" cellpadding="5">
+	    <tr>
+                <td>
+                    <div class="columnTitle">
+                            最新照片日记</div>
+                    <div class="btnEdit">
+                        <% if isHost %>
+                            <%=link_to "添加照片日记",:controller=>"lifebook",:action=>"add",:id=>@params[:id]%>
+                        <% end %>
+                        <%=link_to "更多",:controller=>"lifebook",:action=>"list",:id=>@params[:id]%>
+                    </div>
+                </td>
+            </tr>
+	</table>
+    <% if @newDiaries.size==0 %>        
+    	<div class="noLifebookAlert">
+            <div class="noLifebookAlertPanel">暂无照片日记！</div>
+        </div>
+    <% else %>
+        <% for diary in @newDiaries %>
+        <% count=1 %>
+        <table class="day" cellspacing="5" cellpadding="0">
+            <thead>
+                <tr>
+                    <th>
+                        <div class="lifebookTitle">
+                            <span id="diaryDate">
+                            <%= link_to diary.date,:controller=>"lifebook",:action=>"day",:id=>@params[:id],:diary_id=>diary.id %>
+                            </span>
+                            <% if isHost %>
+                                <span id="diaryTitle<%= diary.id %>" class="diaryTitle">
+                                <% if diary.title==nil %>
+                                    添加标题
+                                <% else %>
+                                <%= diary.title %>
+                                <% end %>
+                                </span>
+                                <script type="text/javascript">
+                                    //<![CDATA[
+                                    new Ajax.InPlaceEditor('diaryTitle<%= diary.id %>', '/lifebook/updateDiaryTitle/<%= diary.id %>', {okText:'保存',cancelText:'取消',savingText:'正在保存...',clickToEditText:'点击修改标题。',submitOnBlur:true,cols:20,callback: function(form, value) { return 'title=' + value}})
+                                    //]]>
+                                </script>
+                                <% else %>
+                                <%= diary.title %>
+                            <% end %>
+                        </div>
+                        <div class="btnEdit">
+                            <%= link_to "更多",:controller=>"lifebook",:action=>"day",:id=>@params[:id],:diary_id=>diary.id %>
+                            <% if isHost %>
+                            <%= link_to "删除",:controller=>"lifebook",:action=>"deleteDay",:id=>@params[:id],:diary_id=>diary.id %>
+                            <% end %>
+                        </div>
+                    </th>
+                </tr>
+            </thead>
+            <tfoot>
+                <tr>
+                    <td align="left">
+                    <% if isHost %>
+                        <span id="diaryContent<%= diary.id %>" class="diaryContent">
+                        <% if diary.content==nil or diary.content==""%>
+                            点击这里添加今日日记！
+                        <% else %>
+                        <%= diary.content %>
+                        <% end %>
+                        </span>
+                        <script type="text/javascript">
+                            //<![CDATA[
+                            new Ajax.InPlaceEditor('diaryContent<%= diary.id %>', '/lifebook/updateDiaryContent/<%= diary.id %>', {okText:'保存',cancelText:'取消',savingText:'正在保存...',clickToEditText:'点击修改日记。',submitOnBlur:true,cols:46,rows:5,callback: function(form, value) { return 'content=' + value}})
+                            //]]>
+                        </script>
+                        <% else %>
+                        <%= diary.content %>
+                    <% end %>
+                    </td>
+                </tr>
+                <tr>
+                    <td align="center">
+                        <table class="quickViewPhotoList">
+                            <tr>
+                            <% @pics = getTodayPicByNum(diary.date,6,@params[:id]) %>
+                            <% pageNum=1%>
+                            <% for pic in @pics%>
+                                <% if count%2 != 1 and count!=1 %>                       
+                                <td>
+                                    <a href="/lifebook/moment/<%=@params[:id]%>?diary_id=<%=diary.id%>&page=<%=pageNum%>">
+                                        <img src="/uploads/thumb/<%=pic.takeDatetime.strftime('%Y-%m-%d')%>/<%=pic.filename%>" alt="<%=pic.takeDatetime.strftime('%I:%M%p')%>" />
+                                    </a>
+                                    <div>
+                                        <%=pic.takeDatetime.strftime('%I:%M%p')%>
+                                        <% if isHost %>
+                                        <div id="desc<%=pic.id%>" class="photoDesc">
+                                        <% if pic.description=="" %>
+                                                点击这里添加描述！
+                                        <% else %>
+                                        <%= pic.description %>
+                                        <% end %>
+                                        </div>
+                                        <script type="text/javascript">
+                                            //<![CDATA[
+                                            new Ajax.InPlaceEditor('desc<%=pic.id%>', '/lifebook/updatePhotoDescription/<%= pic.id %>', {okText:'保存',cancelText:'取消',savingText:'正在保存...',clickToEditText:'点击修改描述。',submitOnBlur:true,cols:13,rows:5,callback: function(form, value) { return 'desc=' + value}})
+                                            //]]>
+                                        </script>
+                                        <% else %>
+                                        <%= pic.description %>
+                                        <% end %>
+                                    </div>
+                                </td>
+                                <% else %>
+                                </tr>
+                                <tr>
+                                <td>
+                                    <a href="/lifebook/moment/<%=@params[:id]%>?diary_id=<%=diary.id%>&page=<%=pageNum%>">
+                                        <img src="/uploads/thumb/<%=pic.takeDatetime.strftime('%Y-%m-%d')%>/<%=pic.filename%>" alt="<%=pic.takeDatetime.strftime('%I:%M%p')%>" />
+                                    </a>
+                                    <div>
+                                        <%=pic.takeDatetime.strftime('%I:%M%p')%>
+                                        <% if isHost %>
+                                        <div id="desc<%=pic.id%>" class="photoDesc">
+                                        <% if pic.description=="" %>
+                                                点击这里添加描述！
+                                        <% else %>
+                                            <%= pic.description %>
+                                        <% end %>
+                                        </div>
+                                        <script type="text/javascript">
+                                            //<![CDATA[
+                                            new Ajax.InPlaceEditor('desc<%=pic.id%>', '/lifebook/updatePhotoDescription/<%= pic.id %>', {okText:'保存',cancelText:'取消',savingText:'正在保存...',clickToEditText:'点击修改描述。',submitOnBlur:true,cols:13,rows:5,callback: function(form, value) { return 'desc=' + value}})
+                                            //]]>
+                                        </script>
+                                        <% else %>
+                                        <%= pic.description %>
+                                        <% end %>
+                                    </div>
+                                </td>                            
+                                <% end %>
+                                <%
+                                    count +=1
+                                    pageNum+=1
+                                %>
+                            <% end%>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+            </tfoot>
+        </table>
+    	<% end %>
+	<% end %>
+</div>

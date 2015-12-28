@@ -1,0 +1,71 @@
+<%= form_tag(:action => :find) %>
+<table class="friend" cellspacing="0" cellpadding="0" width="100%" border="0">
+    <tr>
+        <td class="friendImage">
+            <%=text_field("user","keyWord",:size=>10) %>
+            <%= submit_tag "查找" , :class=>"btn"%>
+        </td>
+    </tr>
+</table>
+<%= end_form_tag %>
+<% for user in @users %>
+<table class="friend" cellspacing="0" cellpadding="0" width="100%" border="0">
+    <tr>
+        <td class="friendImage">
+            <a href="/home/index/<%=user.id %>">
+                <% if user.userDetail.portrait!="" %>
+                    <img src="/uploads/userPortrait/<%=user.userDetail.portrait%>" alt="<%=user.username%>" border="0" />
+                <% else %>
+                    <img src="/img/default_portrait_s.jpg" alt="<%=user.username %>" border="0" />
+                <% end %>
+            </a>
+        </td>
+        <td valign="top">
+            <div class="friendContent">
+                <div class="friendName">
+                    <%=link_to user.username,:controller=>"home",:action=>"index",:id=>user.id%>
+                    <% if user==session[:user]%>
+                        我自己
+                    <% elsif isFriend(user.id)%>
+                        我朋友
+                    <% end %>
+                    <%= online?(user.id) %>
+                </div>
+                <div class="friendInfo">
+                    <%=user.userDetail.sex%> 生日:<%=user.userDetail.birthday%> <%=user.userDetail.hometown%> Email:<%=user.email%></div>
+                <div class="findFriendIntro">
+                    <%=user.userDetail.intro %>
+                </div>
+            </div>
+        </td>
+        <td class="friendActionColumn">
+            <ul class="friendActionList">
+                <% if user==session[:user]%>
+                <li><%=link_to "查看主页",:controller=>"home",:action=>"index",:id=>user.id%></li>
+                <% elsif isFriend(user.id)%>
+                <li><%= link_to "查看主页",:controller=>"home",:action=>"index",:id=>user.id%></li>
+                <li><%= link_to "开始聊天",:controller=>"message",:action=>"chat",:id=>user.id,:friend_id=>session[:user].id %></li>
+                <li><%= link_to "感情破裂了",:controller=>"friend",:action=>"delete",:friend_id=>user.id,:id=>session[:user].id %></li>
+                <% else %>
+                <li><%= link_to "查看主页",:controller=>"home",:action=>"index",:id=>user.id%></li>
+                <li><%= link_to "开始聊天",:controller=>"message",:action=>"chat",:id=>user.id,:friend_id=>session[:user].id %></li>
+                <li><%= link_to "加为好友",:controller=>"friend",:action=>"addFriend",:friend_id=>user.id,:id=>session[:user].id %></li>
+                <% end %>
+            </ul>
+        </td>
+    </tr>
+</table>
+<% end %>
+<div class="pager">
+    <ul>
+        <% for page in @users_pages %>
+            <%=
+            if page==@users_pages.current()
+                "<li class='currentPage'>#{page.number}</li>"
+            else
+                "<li><a href = '?page=#{page.number}' >#{page.number}</a></li>"
+            end
+            %>
+        <% end %>
+    </ul>
+</div>

@@ -1,0 +1,44 @@
+<div id="blog">
+	<table class="columnHeader" width="100%" cellspacing="0" cellpadding="5">
+		<tr>
+			<td>
+			<div class="columnTitle">
+				成员最新博客</div>
+			</td>
+		</tr>
+	</table>
+	<% if @blogs.size == 0 %>
+	<div class="noBlogAlert">
+    <%=
+        @alertMessage="暂时没有写博客！"
+        render(:partial=>"/alertPanel")
+    %>
+    </div>
+    <% else %>
+        <% for blog in @blogs %>
+    	<table class="blogContent" cellspacing="0" cellpadding="5">	   
+            <tr>
+        		<td align="left" class="dateTime">
+        		    <%=link_to blog.writer.username,:controller=>"home",:action=>"index",:id=>blog.writer.id %>：
+        		    <%=link_to blog.title,:controller=>:blog,:action=>:show,:id=>blog.writer.id,:blog_id=>blog.id %>
+                    <br>
+                    <%=blog.writeDatetime.strftime("%Y-%m-%d %I:%M%p") %>                    
+                </td>
+            </tr>  
+    	</table>
+    	<% end %>
+	<% end %>
+	<div class="pager">
+		<ul>
+			<% for page in @blog_pages %>
+                <%=
+                if page==@blog_pages.current()
+                    "<li class='currentPage'>#{page.number}</li>"
+                else
+                    "<li><a href = '/group/home/#{@params[:id]}?blogPage=#{page.number}' >#{page.number}</a></li>"
+                end
+                %>
+            <% end %>
+		</ul>
+	</div>
+</div>

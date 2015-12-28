@@ -1,0 +1,15 @@
+<!-- 菜单 -->
+<div id="menuHeader">
+   <div>我的频道</div> <a href="#">管理</a>
+</div>
+<div id="rightMenu">    
+    <ul id="rightNav">
+    <%for @menu in @menus%>
+        <%if @menu.current %>
+        <li class="current"><%= link_to(@menu.title,@menu.url) %></li>
+        <%else%>
+        <li><%= link_to(@menu.title,@menu.url) %></li>
+        <%end%>
+	<%end%>        
+    </ul>
+</div>

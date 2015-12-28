@@ -1,0 +1,201 @@
+<% if @messages.size == 0 %>
+    <%=
+        @alertMessage="暂时没有聊天记录！"
+        render(:partial=>"/alertPanel")
+    %>
+<% else %>
+    <!--message 列表-->
+    <% for message in @messages%>
+        <!--Message的引用-->
+        <% if message.quotedMessage %>
+        <table id="post" class="wallPost" cellspacing="0" width="100%" border="0">
+            <tr>
+                <td class="wallImage">
+                    <% if message.sender.userDetail.portrait!="" %>
+                    <img src="/uploads/userPortrait/<%=message.sender.userDetail.portrait %>" alt="<%=message.sender.username %>" />
+                    <% else %>
+                    <img src="/img/default_portrait_s1.jpg" alt="<%=message.sender.username %>" />
+                    <% end %>
+                </td>
+                <td class="wallInfo">
+                    <div class="wallHeader">
+                        <a class="profile_link" href="/home/index/<%=message.sender_id%>">
+                            <%=message.sender.username%></a>&nbsp; 说道<%= isPrivate(message.isPrivate)%><br />
+                        <small>
+                        <%=message.sendDatetime.strftime("%Y-%m-%d %I:%M%p")%>                
+                        </small>
+                    </div>
+                    <div class="wallQuote">
+    					<strong>引用消息:</strong>
+    					<div class="wallQuoteFrom">
+    					  <%=message.quotedMessage.sender.username %>
+                          <%=message.quotedMessage.sendDatetime.strftime("%Y-%m-%d %I:%M%p")%> 说道
+    					</div>
+    					<div class="wallQuoteContent">
+    					  <%=message.quotedMessage.content %>
+    					</div>
+    				</div>
+                    <div class="wallText">
+                        <%=message.content%></div>
+                    <div class="wallActions">
+                        <%= link_to "回复",:controller=>"message",:action=>"chat",:id=>message.receiver.id,:friend_id=>message.sender.id%>
+                         - 
+                        <%= link_to "引用",:controller=>"message",:action=>"chat",:id=>session[:user].id,:friend_id=>message.sender.id,:quote_messageId=>message.id%>
+                        <% if (message.sender.id==session[:user].id) or isHost %>
+                         - <%=link_to "删除",:controller=>:message,:action=>:deleteChatMessage,:id=>@params[:id],:message_id=>message.id,:friend_id=>@params[:friend_id] %>
+                        <% end %>
+                    </div>
+                </td>
+            </tr>
+        </table>
+        <!--diary的引用-->
+        <% elsif message.quotedDiary %>
+        <table id="post" class="wallPost" cellspacing="0" width="100%" border="0">
+            <tr>
+                <td class="wallImage">
+                    <% if message.sender.userDetail.portrait!="" %>
+                    <img src="/uploads/userPortrait/<%=message.sender.userDetail.portrait %>" alt="<%=message.sender.username %>" />
+                    <% else %>
+                    <img src="/img/default_portrait_s1.jpg" alt="<%=message.sender.username %>" />
+                    <% end %>
+                </td>
+                <td class="wallInfo">
+                    <div class="wallHeader">
+                        <a class="profile_link" href="/home/index/<%=message.sender_id%>">
+                            <%=message.sender.username%></a>&nbsp; 说道<%= isPrivate(message.isPrivate)%><br />
+                        <small>
+                        <%=message.sendDatetime.strftime("%Y-%m-%d %I:%M%p")%>                
+                        </small>
+                    </div>
+                    <div class="wallQuote">
+                        <strong>引用照片日记:</strong>
+                        <div class="wallQuoteContent">
+                        <a href="/lifebook/day/<%=@params[:id]%>?diary_id=<%=message.quotedDiary.id%>">
+                        <%=message.quotedDiary.date %>
+                        <%=message.quotedDiary.title %>
+                        </a></div>
+                    </div>
+                    <div class="wallText">
+                        <%=message.content%></div>
+                    <div class="wallActions">
+                        <%= link_to "回复",:controller=>"message",:action=>"chat",:id=>message.receiver.id,:friend_id=>message.sender.id%>
+                         - 
+                        <%= link_to "引用",:controller=>"message",:action=>"chat",:id=>session[:user].id,:friend_id=>message.sender.id,:quote_messageId=>message.id%>
+                        <% if (message.sender.id==session[:user].id) or isHost %>
+                         - <%=link_to "删除",:controller=>:message,:action=>:deleteChatMessage,:id=>@params[:id],:message_id=>message.id,:friend_id=>@params[:friend_id] %>
+                        <% end %>
+                    </div>
+                </td>
+            </tr>
+        </table>
+        <!--photo的引用-->
+        <% elsif message.quotedPhoto %>
+        <table id="post" class="wallPost" cellspacing="0" width="100%" border="0">
+            <tr>
+                <td class="wallImage">
+                    <% if message.sender.userDetail.portrait!="" %>
+                    <img src="/uploads/userPortrait/<%=message.sender.userDetail.portrait %>" alt="<%=message.sender.username %>" />
+                    <% else %>
+                    <img src="/img/default_portrait_s1.jpg" alt="<%=message.sender.username %>" />
+                    <% end %>
+                </td>
+                <td class="wallInfo">
+                    <div class="wallHeader">
+                        <a class="profile_link" href="/home/index/<%=message.sender_id%>">
+                            <%=message.sender.username%></a>&nbsp; 说道<%= isPrivate(message.isPrivate)%><br />
+                        <small>
+                        <%=message.sendDatetime.strftime("%Y-%m-%d %I:%M%p")%>                
+                        </small>
+                    </div>
+                    <div class="wallText">
+                        <%=message.content%></div>
+                    <div class="wallActions">
+                        <%= link_to "回复",:controller=>"message",:action=>"chat",:id=>message.receiver.id,:friend_id=>message.sender.id%>
+                         - 
+                        <%= link_to "引用",:controller=>"message",:action=>"chat",:id=>session[:user].id,:friend_id=>message.sender.id,:quote_messageId=>message.id%>
+                        <% if (message.sender.id==session[:user].id) or isHost %>
+                         - <%=link_to "删除",:controller=>:message,:action=>:deleteChatMessage,:id=>@params[:id],:message_id=>message.id,:friend_id=>@params[:friend_id] %>
+                        <% end %>
+                    </div>
+                </td>
+                <td class="wallCommentQuote">
+                	<div class="wallCommentQuoteContent">
+                	<a href="/lifebook/moment/<%=message.quotedPhoto.user.id%>?diary_id=<%=getDiaryIdByDatetime(message.quotedPhoto.takeDatetime,message.quotedPhoto.user.id)%>&page=<%=getPhotoPageNumByPhoto(message.quotedPhoto,message.quotedPhoto.user.id)%>">
+                	<img src="/uploads/thumb/<%=message.quotedPhoto.takeDatetime.strftime('%Y-%m-%d')%>/<%=message.quotedPhoto.filename%>" alt="<%=message.quotedPhoto.description%>" border="0" />
+                	</a>
+                	<%=message.quotedPhoto.takeDatetime.strftime('%Y-%m-%d at %I:%M%p')%>
+                    </div>
+                </td>
+            </tr>
+        </table>
+        <!--post的引用-->
+        <% elsif message.quotedPost %>
+        <table id="post" class="wallPost" cellspacing="0" width="100%" border="0">
+            <tr>
+                <td class="wallImage">
+                    <% if message.sender.userDetail.portrait!="" %>
+                    <img src="/uploads/userPortrait/<%=message.sender.userDetail.portrait %>" alt="<%=message.sender.username %>" />
+                    <% else %>
+                    <img src="/img/default_portrait_s1.jpg" alt="<%=message.sender.username %>" />
+                    <% end %>
+                </td>
+                <td class="wallInfo">
+                    <div class="wallHeader">
+                        <a class="profile_link" href="/home/index/<%=message.sender_id%>">
+                            <%=message.sender.username%></a>&nbsp; 说道<%= isPrivate(message.isPrivate)%><br />
+                        <small>
+                        <%=message.sendDatetime.strftime("%Y-%m-%d %I:%M%p")%>                
+                        </small>
+                    </div>
+                    <div class="wallQuote">
+                        <strong>回复信息广场信息:</strong>
+                        <div class="wallQuoteContent">
+                        <a href="/square/post/<%=message.quotedPost.id%>"><%=message.quotedPost.title %></a></div>
+                    </div>
+                    <div class="wallText">
+                        <%=message.content%></div>
+                    <div class="wallActions">
+                        <%= link_to "回复",:controller=>"message",:action=>"chat",:id=>message.receiver.id,:friend_id=>message.sender.id%>
+                         - 
+                        <%= link_to "引用",:controller=>"message",:action=>"chat",:id=>session[:user].id,:friend_id=>message.sender.id,:quote_messageId=>message.id%>
+                        <% if (message.sender.id==session[:user].id) or isHost %>
+                         - <%=link_to "删除",:controller=>:message,:action=>:deleteChatMessage,:id=>@params[:id],:message_id=>message.id,:friend_id=>@params[:friend_id] %>
+                        <% end %>
+                    </div>
+                </td>
+            </tr>
+        </table>
+        <% else %>
+        <table id="post" class="wallPost" cellspacing="0" width="100%" border="0">
+            <tr>
+                <td class="wallImage">
+                    <% if message.sender.userDetail.portrait!="" %>
+                    <img src="/uploads/userPortrait/<%=message.sender.userDetail.portrait %>" alt="<%=message.sender.username %>" />
+                    <% else %>
+                    <img src="/img/default_portrait_s1.jpg" alt="<%=message.sender.username %>" />
+                    <% end %>
+                </td>
+                <td class="wallInfo">
+                    <div class="wallHeader">
+                        <a class="profile_link" href="/home/index/<%=message.sender_id%>">
+                            <%=message.sender.username%></a>&nbsp; 说道<%= isPrivate(message.isPrivate)%><br />
+                        <small>
+                        <%=message.sendDatetime.strftime("%Y-%m-%d %I:%M%p")%>                
+                        </small>
+                    </div>
+                    <div class="wallText">
+                        <%=message.content%></div>
+                    <div class="wallActions">
+                        <%= link_to "回复",:controller=>"message",:action=>"chat",:id=>message.receiver.id,:friend_id=>message.sender.id%>
+                         - 
+                        <%= link_to "引用",:controller=>"message",:action=>"chat",:id=>session[:user].id,:friend_id=>message.sender.id,:quote_messageId=>message.id%>
+                        <% if (message.sender.id==session[:user].id) or isHost %>
+                         - <%=link_to "删除",:controller=>:message,:action=>:deleteChatMessage,:id=>@params[:id],:message_id=>message.id,:friend_id=>@params[:friend_id] %>
+                        <% end %>
+                    </div>
+                </td>
+            </tr>
+        </table>
+        <% end %>
+    <% end %>
+<% end %>

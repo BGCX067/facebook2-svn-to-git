@@ -1,0 +1,20 @@
+<%=render_partial("/header")%>
+<div id="body">
+    <div id="content">
+        <div id="location">
+            <div class="title">
+                <%= @location %>
+            </div>
+            <!--if -->
+            <% if @post %>    
+                <%= render_component(:controller=>"menu",:action => "squareTabs",:params =>{:currentTab=>@currentTab,:class=>@post.squareClass.parentClassID.to_s,:subClassID=>@post.postClass.to_s } )%>
+            <% else %>
+                <%= render_component(:controller=>"menu",:action => "squareTabs",:params =>{:currentTab=>@currentTab,:class=>@params[:id] } )%>
+            <% end %>
+        </div>
+        <%= @content_for_layout %>
+    </div>
+    <%= render_component(:controller=>"menu",:action => "mainMenu",:params=>{:currentMenu=>@currentMenu} )%>      
+    <%= render(:partial =>"/ad") %>
+</div>
+<%=render_partial("/footer")%>

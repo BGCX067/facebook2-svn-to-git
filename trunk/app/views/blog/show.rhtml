@@ -1,0 +1,36 @@
+<div id="guideBar">
+	<a href="/home/index/<%=@params[:id]%>">返回首页</a>
+	<% if isHost %>
+	 | <%=link_to "写博客",:controller=>"blog",:action=>"write",:id=>@params[:id] %>
+    <% end %>
+</div>
+<div id="myBlog">
+	<table cellspacing="5" cellpadding="0" width="100%">
+		<tr>
+			<th>
+			    <div class="blogHeader">
+    				<div class="blogTitle">
+    					<a href="#"><%=@blog.title %></a>
+    					<br>
+    					<small class="dateTime">
+    	                <%=@blog.writeDatetime.strftime("%Y-%m-%d %I:%M %p") %>
+    	                </small>
+    				</div>
+    				<% if isHost %>				
+    				<div class="btnEdit">
+    					<%=link_to "修改",:controller=>"blog",:action=>"edit",:id=>@params[:id],:blog_id=>@blog.id %>
+				        <%=link_to "删除",:controller=>"blog",:action=>"delete",:id=>@params[:id],:blog_id=>@blog.id %>
+    				</div>
+    				<% end %>
+				</div>
+			</th>
+		</tr>
+		<tr>
+			<td align="left">
+    			<div class="blogContent">	              
+                    <%=@blog.content %>
+                </div>
+			</td>
+		</tr>
+	</table>
+</div>

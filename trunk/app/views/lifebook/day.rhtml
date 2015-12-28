@@ -1,0 +1,212 @@
+<% if not isHost %>
+<div id="guideBar">
+    <%=link_to "返回 - 查看所有",:action=>"friendLifebooks",:id=>session[:user].id %>
+</div>
+<% end %>
+<% count=1 %> 
+<div class="myLifebook">
+    <table cellspacing="5" cellpadding="0" width="100%">
+        <thead>
+            <tr>
+                <th>
+                    <div class="lifebookTitle">
+                        <span class="diaryDate">
+                        <%=getYestodayLink(@params[:id],@diary) %>  
+                           【<%=@diary.date%>】
+                        <%=getTomorrowLink(@params[:id],@diary) %>
+                        </span>
+                        <% if isHost %>
+                            <span id="diaryTitle" class="diaryTitle">
+                            <% if @diary.title==nil %>
+                                <i>点击这里添加今日标题！</i>
+                            <% else %>
+                            <%= @diary.title %>
+                            <% end %>
+                            </span>
+                            <script type="text/javascript">
+                                //<![CDATA[
+                                new Ajax.InPlaceEditor('diaryTitle', '/lifebook/updateDiaryTitle/<%= @diary.id %>', {okText:'保存',cancelText:'取消',savingText:'正在保存...',clickToEditText:'点击修改标题。',submitOnBlur:true,cols:20,callback: function(form, value) { return 'title=' + value}})
+                                //]]>
+                            </script>
+                        <% else %>
+                            <%= @diary.title %>
+                        <% end %>
+                          - 共<span class="redNum"><%= getTodayPicsNum(@diary.date,@diary.user.id) %></span>张
+                    </div>                    
+                    <div class="btnEdit">
+                        <% if isHost %>
+                        <%=link_to "删除",:action=>"deleteDay",:id=>@params[:id],:diary_id=>@params[:diary_id]%>
+                        <% end %>
+                    </div>
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td align="left">
+                <% if isHost %>
+                    <span id="diaryContent<%= @diary.id %>">
+                    <% if @diary.content==nil or @diary.content=="" %>
+                        <i>点击这里添加今日日记！</i>
+                    <% else %>
+                    <%= @diary.content %>
+                    <% end %>
+                    </span>
+                    <script type="text/javascript">
+                        //<![CDATA[
+                        new Ajax.InPlaceEditor('diaryContent<%= @diary.id %>', '/lifebook/updateDiaryContent/<%= @diary.id %>', {okText:'保存',cancelText:'取消',savingText:'正在保存...',clickToEditText:'点击修改日记。',submitOnBlur:true,cols:76,rows:5,callback: function(form, value) { return 'content=' + value}})
+                        //]]>
+                    </script>
+                    <% else %>
+                    <%= @diary.content %>
+                <% end %>
+                </td>
+            </tr>
+        </tbody>
+        <tfoot>
+            <tr>
+                <td align="center">
+                    <table class="photoList">
+                        <tr>
+                        <% pageNum=1%>                       
+                        <% for pic in @photos%>
+                            <% if count%4 != 1 and count!=1 %>              
+                            <td>
+                                <a href="/lifebook/moment/<%=@params[:id]%>?diary_id=<%=@diary.id%>&page=<%=pageNum+getOffsetPicNumByPageNum(@params[:page])%>">
+                                    <img width=100 src="/uploads/thumb/<%=pic.takeDatetime.strftime('%Y-%m-%d')%>/<%=pic.filename%>" alt="<%=pic.takeDatetime.strftime('%I:%M%p')%>" />
+                                </a>
+                                <div>
+                                    <%=pic.takeDatetime.strftime('%I:%M%p')%>
+                                    <% if isHost %>
+                                    <div id="desc<%=pic.id%>" class="photoDesc">
+                                    <% if pic.description=="" %>
+                                        <i>点击这里添加描述！</i>
+                                    <% else %>
+                                    <%= pic.description %>
+                                    <% end %>
+                                    </div>
+                                    <script type="text/javascript">
+                                        //<![CDATA[
+                                        new Ajax.InPlaceEditor('desc<%=pic.id%>', '/lifebook/updatePhotoDescription/<%= pic.id %>', {okText:'保存',cancelText:'取消',savingText:'正在保存...',clickToEditText:'点击修改描述。',submitOnBlur:true,cols:13,rows:5,callback: function(form, value) { return 'desc=' + value}})
+                                        //]]>
+                                    </script>
+                                    <% else %>
+                                    <%= pic.description %>
+                                    <% end %>
+                                </div>
+                            </td>
+                            <% else %>
+                            </tr>
+                            <tr>
+                            <td>
+                                <a href="/lifebook/moment/<%=@params[:id]%>?diary_id=<%=@diary.id%>&page=<%=pageNum+getOffsetPicNumByPageNum(@params[:page])%>">
+                                    <img width=100 src="/uploads/thumb/<%=pic.takeDatetime.strftime('%Y-%m-%d')%>/<%=pic.filename%>" alt="<%=pic.takeDatetime.strftime('%I:%M%p')%>" />
+                                </a>
+                                <div>
+                                    <%=pic.takeDatetime.strftime('%I:%M%p')%>
+                                    <% if isHost %>
+                                    <div id="desc<%=pic.id%>" class="photoDesc">
+                                    <% if pic.description=="" %>
+                                            点击这里添加描述！
+                                    <% else %>
+                                    <%= pic.description %>
+                                    <% end %>
+                                    </div>
+                                    <script type="text/javascript">
+                                        //<![CDATA[
+                                        new Ajax.InPlaceEditor('desc<%=pic.id%>', '/lifebook/updatePhotoDescription/<%= pic.id %>', {okText:'保存',cancelText:'取消',savingText:'正在保存...',clickToEditText:'点击修改描述。',submitOnBlur:true,cols:13,rows:5,callback: function(form, value) { return 'desc=' + value}})
+                                        //]]>
+                                    </script>
+                                    <% else %>
+                                    <%= pic.description %>
+                                    <% end %>
+                                </div>
+                            </td>                            
+                            <% end %>
+                            <%
+                                count +=1
+                                pageNum +=1
+                            %>
+                        <% end%>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+        </tfoot>
+    </table>
+    <div class="pager">
+        <ul>
+            <% for page in @photo_pages %>
+                <%=
+                if page==@photo_pages.current()
+                    "<li class='currentPage'>#{page.number}</li>"
+                else
+                    "<li><a href = '#{@params[:id]}?diary_id=#{@params[:diary_id]}&page=#{page.number}' >#{page.number}</a></li>"
+                end
+                %>
+            <% end %>
+        </ul>
+    </div>
+    <div id="comment">
+    <% for message in @diary.quotingMessages %>
+    <table id="post" class="wallPost" cellspacing="0" width="100%" border="0">
+        <tr>
+            <td class="wallImage">
+                <% if message.sender.userDetail.portrait!="" %>
+                <img src="/uploads/userPortrait/<%=message.sender.userDetail.portrait %>" alt="<%=message.sender.username %>" />
+                <% else %>
+                <img src="/img/default_portrait_s1.jpg" alt="<%=message.sender.username %>" />
+                <% end %>
+            </td>
+            <td class="wallInfo">
+                <div class="wallHeader">
+                    <a class="profile_link" href="/home/index/<%=message.sender_id%>">
+                        <%=message.sender.username%></a>&nbsp; 说道<%= isPrivate(message.isPrivate)%><br />
+                    <small>
+                    <%=message.sendDatetime.strftime("%Y-%m-%d %I:%M%p")%>                
+                    </small>
+                </div>
+                <div class="wallText">
+                    <%=message.content%></div>
+                <div class="wallActions">
+                    <%= link_to "回复",:controller=>"message",:action=>"chat",:id=>message.receiver.id,:friend_id=>message.sender.id%>
+                     - 
+                    <%= link_to "引用",:controller=>"message",:action=>"chat",:id=>message.receiver.id,:friend_id=>message.sender.id,:quote_messageId=>message.id%>
+                    <% if (message.sender.id==session[:user].id) or isHost %>
+                     - <%=link_to "删除",:controller=>:message,:action=>:delete,:message_id=>message.id,:receiver_id=>message.receiver_id %>
+                    <% end %>
+                </div>
+            </td>
+        </tr>
+    </table>
+    <% end %>
+    <!--发送表单-->
+    <%= javascript_include_tag :fckeditor %>
+    <script type="text/javascript">
+    window.onload = function()
+    {
+        var oFCKeditor = new FCKeditor('message_content', '100%', '120', 'Basic', '' );
+        oFCKeditor.ReplaceTextarea();
+    }
+    </script>
+    <%= form_tag(:controller => "message",:action => "Send")%>
+    <table width="100%" cellspacing="3" cellpadding="0">
+        <tr>
+            <td>
+                <%=text_area "message","content",:cols=>77,:rows=>4 %>                                               
+            </td>
+        </tr>
+        <tr>
+            <td align="right">
+                <label for="message_isPrivate">
+                     <%= check_box("message","isPrivate",{},"true", "false") %>私秘
+                </label>
+                <%= submit_tag "提交",:class=>"btn"%>
+            </td>
+        </tr>
+    </table>
+    <%=hidden_field(:message, :quote_diary_id, :value=>@params[:diary_id])%>
+    <%= hidden_field(:message, :receiver_id, :value=>@params[:id])%>
+    <%= end_form_tag %>
+</div>
+</div>

@@ -1,0 +1,59 @@
+<div id="friendList">
+    <% for friend in @friends%>
+    <table class="friend" cellspacing="0" cellpadding="0" width="100%" border="0">
+        <tr>
+            <td class="friendImage">
+                <% if friend.userDetail.portrait!="" %>
+                <img src="/uploads/userPortrait/<%=friend.userDetail.portrait %>" alt="<%=friend.username %>" />
+                <% else %>
+                <img src="/img/default_portrait_s.jpg" alt="<%=friend.username %>" />
+                <% end %>
+            </td>
+            <td valign="top">
+                <div class="friendContent">
+                    <div class="friendName">
+                        <%=link_to friend.username,:controller=>"home",:action=>"index",:id=>friend.id%>
+                        <!--=online?(friend.id)-->
+                    </div>
+                    <div class="friendInfo">
+                        <%=friend.userDetail.sex%> 生日:<%=friend.userDetail.birthday%> <%=friend.userDetail.hometown%> Email:<%=friend.email%></div>
+                    <div class="findFriendIntro">
+                        <%=friend.userDetail.intro %>
+                    </div>
+                </div>
+            </td>
+            <td class="friendActionColumn">
+                <ul class="friendActionList">
+                    <% if friend==session[:user] %>
+                    <li><%=link_to "查看主页",:controller=>"home",:action=>"index",:id=>friend.id%></li>
+                    <% elsif isFriend(friend.id) %>
+                    <li><%= link_to "查看主页",:controller=>"home",:action=>"index",:id=>friend.id%></li>
+                    <li><%= link_to "开始聊天",:controller=>"message",:action=>"chat",:id=>session[:user].id,:friend_id=>friend.id %></li>
+                    <% else %>
+                    <li><%= link_to "查看主页",:controller=>"home",:action=>"index",:id=>friend.id%></li>
+                    <li><%= link_to "开始聊天",:controller=>"message",:action=>"chat",:id=>session[:user].id,:friend_id=>friend.id %></li>
+                    <li><%= link_to "加为好友",:controller=>"friend",:action=>"addFriend",:friend_id=>friend.id,:id=>session[:user].id %></li>
+                    <% end %>
+                    
+                    <% if isHost %>
+                    <li><%=link_to "感情破裂了",:controller=>"friend",:action=>"delete",:friend_id=>friend.id,:id=>session[:user].id %></li>
+                    <% end %>
+                </ul>
+            </td>
+        </tr>
+    </table>
+    <% end %>
+    <div class="pager">
+        <ul>
+            <% for page in @friend_pages %>
+                <%=
+                if page==@friend_pages.current()
+                    "<li class='currentPage'>#{page.number}</li>"
+                else
+                    "<li><a href = '#{@params[:id]}?page=#{page.number}' >#{page.number}</a></li>"
+                end
+                %>
+            <% end %>
+        </ul>
+    </div>
+</div>

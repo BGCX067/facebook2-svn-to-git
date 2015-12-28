@@ -1,0 +1,42 @@
+<div id="guideBar">
+	<a href="/home/index/<%=@params[:id]%>">返回首页</a>
+</div>
+<%= javascript_include_tag :fckeditor %>
+<script type="text/javascript">
+window.onload = function()
+{
+var oFCKeditor = new FCKeditor('blog_content') ;
+oFCKeditor.ReplaceTextarea() ;
+}
+</script>
+<div id="form">
+﻿<%= form_tag({:action => :edit,:id=>@params[:id],:blog_id=>@blog.id})%>
+    <div class="subFormTitle">修改博客</div>
+    <div class="subFormDesc">你可以在这里修改你以前写过的博客。</div>
+	<table class="subForm" cellpadding="0" cellspacing="5">
+		<tr>
+			<th>标题：</th>
+			<td><%= text_field 'blog', 'title',:size=>"60" %></td>
+		</tr>
+		<tr>
+			<th>内容：</th>
+			<td>
+			<%=text_area("blog","content",:cols=>47,:rows=>50)%></td>
+		</tr>
+        <tr>
+			<th></th>
+			<td>
+                <label for="blog_isPrivate">
+                     <%= check_box("blog","isPrivate",{},"true", "false") %> 私秘博客
+                </label>
+            </td>
+		</tr>
+	</table>
+	<div id="alertPanel"></div>
+	<table cellpadding="0" cellspacing="5" align="center">
+		<tr>
+			<td><%=submit_tag "修 改",:class=>"btn"%></td>
+		</tr>
+	</table>
+<%= end_form_tag %>
+</div>

@@ -1,0 +1,40 @@
+<%= javascript_include_tag "menu" %>
+<script language="JavaScript">
+<!--
+    function showToolbar()
+    {
+    	mstyle = new MenuStyle();
+    	mstyle.bgColor="#3B5998";
+    	mstyle.mainMenuBorder=0;
+    	mstyle.subMenuBorder=0;
+    	mstyle.subMenuWidth=100;
+    	mstyle.menuDelta = 1; // distance between mainmenu and submenu
+    	mstyle.clsMenuItemIE = "class=clsMenuItemIE";
+    	mstyle.clsMenuItemNS = "class=clsMenuItemNS";
+    	mstyle.bMenuStatic = 1;
+    	mstyle.mainMenuWidth = "100%";
+    
+        Menu = new Menu(mstyle);
+        Menu.addItem("program", "频道", "所订阅的频道", null, null);
+        Menu.addSubItem("program", "<img src='/img/app_ico/marketplace.gif' border='0' align='absmiddle'/>照片日记", "", "/lifebook/list/<%=@user_id%>", null);
+        Menu.addSubItem("program", "<img src='/img/app_ico/1.gif' border='0' align='absmiddle'/>信息广场", "", "/square/myPosts/<%=@user_id%>", null);
+        Menu.addSubItem("program", "<img src='/img/app_ico/photo.gif' border='0' align='absmiddle'/>相册集", "", "#", null);
+        Menu.addSubItem("program", "<img src='/img/app_ico/2.gif' border='0' align='absmiddle'/>开心贴吧", "", "#", null);
+        Menu.addSubItem("program", "<img src='/img/app_ico/3.gif' border='0' align='absmiddle'/>浙江大学", "", "#", null);
+        
+        Menu.showMenu();
+    }
+//-->
+</script>
+<div class="tabs">
+    <ul>
+    <%for @tab in @tabs%>
+        <%if @tab.current %>
+            <li><span class="currentTab"><%=@tab.title%></span></li>
+        <%else%>
+            <li><%= link_to(@tab.title,@tab.url) %></li>
+        <%end%>
+    <%end%>
+        <!--<li id="SmartMenu"><script language="JavaScript">showToolbar();</script></li>-->
+    </ul>
+</div>

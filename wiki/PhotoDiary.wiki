@@ -1,0 +1,11 @@
+#summary One-sentence summary of this page.
+#labels 相片日记
+
+= Introduction =
+
+相片日记是用来将照片来作为日记记录的一种方式。
+
+
+= Details =
+
+facebook2本来还有几个域名叫做lifebook.net.cn和walklog.cn等其他一些域名，本来是希望他能够提供一个管理相片日记的工具。因为本人非常喜欢走到哪里就拿着手机拍到哪里。所以我也非常需要这样的工具。大家用用看吧。

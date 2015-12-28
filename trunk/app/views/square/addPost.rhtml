@@ -1,0 +1,39 @@
+<%= javascript_include_tag :fckeditor %>
+<script type="text/javascript">
+window.onload = function()
+{
+var oFCKeditor = new FCKeditor('post_content') ;
+// new FCKeditor('post_content', '100%', '400', 'FreeMode', '' )
+oFCKeditor.ReplaceTextarea() ;
+}
+</script>
+<%= form_tag(:controller => "square",:action => "add",:id => @params[:id])%>
+<div id="form">
+   <div id="formTitle">添加信息</div>
+   <div id="formDesc">您可以发布您的任何分类信息。</div>
+   <table class="subForm" cellpadding="0" cellspacing="5">
+		<tr>
+			<th>标题</th>
+			<td><%= text_field "post","title",:size=>60%>
+			</td>
+		</tr>
+		<tr>
+			<th>类型</th>
+			<td>
+			<%= select(:post, :postClass, getSquareColumnsWhenAdding(@params[:id])) %>
+			</td>
+		</tr>
+		<!---->
+		<tr>
+			<th>内容</th>
+			<td><%= text_area "post","content",:cols=>47,:rows=>5%>
+			</td>
+		</tr>				
+	</table>
+	<table cellpadding="0" cellspacing="5" align="center">
+		<tr>
+			<td><%= submit_tag "发送",:class=>"btn"%></td>
+		</tr>
+	</table>
+</div>
+<%= end_form_tag%>

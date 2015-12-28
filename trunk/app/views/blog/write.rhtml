@@ -1,0 +1,49 @@
+<%= javascript_include_tag :fckeditor %>
+<script type="text/javascript">
+window.onload = function()
+{
+var oFCKeditor = new FCKeditor('blog_content') ;
+// new FCKeditor('blog_content', '100%', '400', 'FreeMode', '' )
+oFCKeditor.ReplaceTextarea() ;
+}
+</script>
+<div id="guideBar">
+	<a href="/home/index/<%=@params[:id]%>">返回首页</a>
+</div>
+<div id="form">
+﻿<%= form_tag({:action => :write,:id=>@params[:id]})%>
+    <div class="subFormTitle">写博客</div>
+    <div class="subFormDesc">写出你的心情，写出你的生活。</div>
+	<table class="subForm" cellpadding="0" cellspacing="5">
+		<tr>
+			<th>标题：</th>
+			<td><%= text_field 'blog', 'title',:size=>"60" %></td>
+		</tr>
+		<tr>
+			<th>内容：</th>
+			<td>
+			<%=text_area("blog","content",:cols=>47,:rows=>50)%></td>
+		</tr>
+        <tr>
+			<th></th>
+			<td>
+                <label for="blog_isPrivate">
+                     <%= check_box("blog","isPrivate",{},"true", "false") %> 私秘博客
+                </label>
+                <label for="blog_isTellGroup">
+                     <%= check_box("bloga","isTellGroup",{},"true", "false") %> 告诉圈子
+                </label>
+                <label for="blog_isTellFriend">
+                     <%= check_box("bloga","isTellFriend",{},"true", "false") %> 告诉好友
+                </label>
+            </td>
+		</tr>
+	</table>
+	<div id="alertPanel"></div>
+	<table cellpadding="0" cellspacing="5" align="center">
+		<tr>
+			<td><%=submit_tag "添 加",:class=>"btn",:disable_with=>"正在发送" %></td>
+		</tr>
+	</table>
+<%= end_form_tag %>
+</div>

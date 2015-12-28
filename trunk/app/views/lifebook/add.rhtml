@@ -1,0 +1,20 @@
+<div id="form">
+   <div id="formTitle">添加照片日记</div>
+   <div id="formDesc">
+   您可以上传.ZIP压缩包，这样方便上传，而且也方便管理。<A href="/lifebook_demo/index.htm">查看动画演示</a>
+   <br><br><i>您的空间使用情况 已用<%=getUsedSpace%>M/共有<%=getTotalSpace%>M.</i>
+   </div>
+   <div id="alertPanel"></div>
+    <table cellpadding="0" cellspacing="0" align="center">
+    	<tr>
+    		<td>
+            <object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=7,0,19,0" width="500" height="350">
+               <param name="movie" value="/upload.swf" />
+               <param name="quality" value="high" />
+               <param name="FlashVars" value="availableSize=<%=getTotalSpace.to_i-getUsedSpace.to_i%>" />               
+               <embed src="/upload.swf" quality="high" pluginspage="http://www.macromedia.com/go/getflashplayer" type="application/x-shockwave-flash" width="500" height="350"></embed>
+            </object>
+    		</td>
+    	</tr>
+    </table>
+</div>

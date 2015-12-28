@@ -1,0 +1,88 @@
+<div class="myLifebook">
+	<table class="columnHeader" width="100%" cellspacing="0" cellpadding="5">
+	    <tr>
+            <td>
+                <div class="columnTitle">
+                        组员照片日记</div>
+                <div class="btnEdit">
+                    <%=link_to "更多",:controller=>"group",:action=>"groupMembersLifebook",:id=>@params[:id]%>
+                </div>
+            </td>
+        </tr>
+	</table>
+    <% if not @diaries %>
+    	<div class="noLifebookAlert">
+            <div class="noLifebookAlertPanel">暂无照片日记！</div>
+        </div>
+    <% else %>
+        <% for diary in @diaries %>
+        <% count=1 %>
+        <table class="day" cellspacing="5" cellpadding="0">
+            <thead>
+                <tr>
+                    <th>
+                        <div class="lifebookTitle">
+                            <span id="diaryDate">
+                            <%= link_to diary.date,:controller=>"lifebook",:action=>"day",:id=>diary.user.id,:diary_id=>diary.id %>
+                            by 
+                            <%= link_to diary.user.username,:controller=>"home",:action=>"index",:id=>diary.user.id %>
+                            <%= diary.title %>
+                             - 共<span class="redNum"><%= getTodayPicsNum(diary.date,diary.user.id) %></span>张
+                            </span>
+                        </div>
+                        <div class="btnEdit">
+                            <%= link_to "更多",:controller=>"lifebook",:action=>"day",:id=>diary.user.id,:diary_id=>diary.id %>
+                        </div>
+                    </th>
+                </tr>
+            </thead>
+            <tfoot>
+                <tr>
+                    <td align="left">                    
+                        <%= diary.content %>
+                    </td>
+                </tr>
+                <tr>
+                    <td align="center">
+                        <table class="quickViewPhotoList">
+                            <tr>
+                            <% @pics = getTodayPicByNum(diary.date,6,diary.user.id) %>
+                            <% pageNum=1%>
+                            <% for pic in @pics%>
+                                <% if count%2 != 1 and count!=1 %>                       
+                                <td>
+                                    <a href="/lifebook/moment/<%=diary.user.id %>?diary_id=<%=diary.id%>&page=<%=pageNum%>">
+                                        <img src="/uploads/thumb/<%=pic.takeDatetime.strftime('%Y-%m-%d')%>/<%=pic.filename%>" alt="<%=pic.takeDatetime.strftime('%I:%M%p')%>" />
+                                    </a>
+                                    <div>
+                                        <%=pic.takeDatetime.strftime('%I:%M%p')%>                                        
+                                        <%= pic.description %>
+                                    </div>
+                                </td>
+                                <% else %>
+                                </tr>
+                                <tr>
+                                <td>
+                                    <a href="/lifebook/moment/<%=diary.user.id %>?diary_id=<%=diary.id%>&page=<%=pageNum%>">
+                                        <img src="/uploads/thumb/<%=pic.takeDatetime.strftime('%Y-%m-%d')%>/<%=pic.filename%>" alt="<%=pic.takeDatetime.strftime('%I:%M%p')%>" />
+                                    </a>
+                                    <div>
+                                        <%=pic.takeDatetime.strftime('%I:%M%p')%>                                        
+                                        <%= pic.description %>
+                                    </div>
+                                </td>                            
+                                <% end %>
+                                <%
+                                    count +=1
+                                    pageNum +=1
+                                %>
+                            <% end%>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+            </tfoot>
+        </table>
+    	<% end %>
+	<% end %>
+</div>

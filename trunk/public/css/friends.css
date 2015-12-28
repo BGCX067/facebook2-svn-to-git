@@ -1,0 +1,83 @@
+﻿/*我的好友*/
+#friendList {
+	margin-bottom: 0px;
+}
+/*一个朋友的 table*/
+.friend{
+	margin-top:5px;
+	border:1px #dddddd solid;
+}
+.friendImage{
+	vertical-align:top;
+	padding:5px 5px 5px 5px;
+}
+.friendImage img{
+	vertical-align:top;
+	width:150px;
+}
+.friendContent{
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	font-weight: normal;
+	color: #666666;
+	width:365px;
+}
+.friendName{
+	padding:8px 5px 0px 5px;
+	font-weight:bold;
+}
+.friendInfo{
+	vertical-align:top;
+	padding:5px 5px 5px 5px;	
+}
+.friendIntro{
+	border-top:1px #dddddd dashed;
+	PADDING:5px 0px 5px 5px;
+	line-height:18px;
+}
+.findFriendIntro{
+	border-top:1px #dddddd dashed;
+	PADDING:5px 0px 5px 5px;
+}
+/*好友新闻*/
+.friendNews {
+	PADDING:6px 0px 5px 5px;
+}
+.friendNews table {
+	margin-top:3px;
+}
+.friendNews th {
+	font-weight: normal;
+}
+/*右边的操作栏目*/
+.friendActionColumn{
+	vertical-align:top;
+	PADDING:5px 5px 5px 5px;
+}
+.friendActionList{
+	width:100px;
+	list-style-type:none;
+	margin-left:0;
+}
+.friendActionList a {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	color: #000080;	
+	BACKGROUND: #ffffff;
+	text-decoration: none;
+	
+	width:100px;
+	PADDING: 6px 5px 5px 5px;
+	DISPLAY: block;	
+	border-bottom:1px #dddddd solid;
+}
+.friendActionList a:hover {	
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;	
+	COLOR: white;
+	BACKGROUND: #3b5998;
+	TEXT-DECORATION: none;
+	
+	DISPLAY: block;	
+	PADDING: 6px 5px 5px 5px;	
+}

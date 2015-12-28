@@ -1,0 +1,54 @@
+<%
+    @CSSs = ["square.css"]
+%>
+<div id="squarePost">
+	<table class="post" cellspacing="0" width="100%" border="0">
+	    <tr>
+	        <td class="postImage">
+	            <% if @post.poster.userDetail.portrait!="" %>
+                    <img src="/uploads/userPortrait/<%=@post.poster.userDetail.portrait %>" alt="<%=@post.poster.username %>" />
+                <% else %>
+                    <img src="/img/default_portrait_s1.jpg" alt="<%=@post.poster.username %>" />
+                <% end %>
+	        </td>
+	        <td class="postInfo">
+	            <div class="postHeader">
+	            	<div class="postTitle">
+	            	<%=@post.title %>
+	              </div>
+	            	发布人:  <%= link_to @post.poster.username,:controller=>"home",:action=>"index",:id=>@post.poster.id%> &nbsp; 
+	            	<small><%=@post.postDatetime.strftime("%Y-%m-%d %I:%M %p") %></small>
+	            </div>	            
+	            <div class="postText">	              
+	                <%=@post.content %></div>
+	            <div class="postActions">
+	                <%= link_to "回复发布人",:controller=>"message",:action=>"chat",:id=>@post.poster.id,:friend_id=>session[:user].id,:quote_postId=>@post.id %>
+	            </div>
+	        </td>
+	    </tr>
+	</table>
+	
+	<% for message in @post.quotingMessages %>
+	   <% if not message.isPrivate %>
+            <table class="post" cellspacing="0" width="89%" align="right" border="0">
+                <tr>
+                    <td class="postImage">
+                        <% if message.sender.userDetail.portrait!="" %>
+                            <img src="/uploads/userPortrait/<%=message.sender.userDetail.portrait %>" alt="<%=message.sender.username %>" />
+                        <% else %>
+                            <img src="/img/default_portrait_s1.jpg" alt="<%=message.sender.username %>" />
+                        <% end %>
+                    </td>
+                    <td class="postInfo">
+                        <div class="postHeader">
+                        	回复人:  <%= link_to message.sender.username,:controller=>"home",:action=>"index",:id=>message.sender.id%> &nbsp; 
+                        	<small><%=message.sendDatetime.strftime("%Y-%m-%d %I:%M %p") %></small>
+                        </div>	            
+                        <div class="postText">	              
+                            <%=message.content %></div>
+                    </td>
+                </tr>
+            </table>
+	   <% end %>
+	<% end %>
+</div>

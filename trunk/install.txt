@@ -1,0 +1,12 @@
+require gems:
+
+gem install rails
+gem install rubyzip
+gem install rmagick-1.14.1-win32.gem //RMagick-1.14.1_IM-6.3.0-7-Q8
+install ImageMagick-6.3.0-7-Q8-windows-dll.exe
+
+
+install:
+1. restore facebook2.sql
+2. change config/database.yml
+3. start with webrick or mongrel

@@ -1,0 +1,8 @@
+<%=render_partial("/header")%>
+<div id="body">
+    <div id="content">
+        <%= @content_for_layout %>
+    </div>
+    <%= render_component(:controller=>"menu",:action => "loginForm")%>      
+</div>
+<%=render_partial("/footer")%>

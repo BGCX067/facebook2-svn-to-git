@@ -1,0 +1,141 @@
+﻿/*广场*/
+.squareMenu {
+	height:25px;
+	border-bottom: 1px #999999 solid;
+}
+.squareNav {
+	margin: 3px 0px 0px 0px;
+	list-style: none;
+}
+.squareNav li {
+	float: left;
+	margin-left: 5px;
+}
+.squareMenu .current {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	PADDING: 5px 5px 5px 5px;
+	font-weight:bold;
+	color: white;
+	text-decoration: none;
+	BACKGROUND: #999999;
+}
+.squareMenu a {
+	BACKGROUND: #eeeeee;
+	COLOR: #666666;
+	TEXT-DECORATION: none;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	DISPLAY: block;
+	PADDING: 5px 5px 5px 5px;
+	font-weight:bold;
+}
+.squareMenu a:hover {
+	color: white;
+	text-decoration: none;
+	BACKGROUND: #999999;
+}
+.squareContent {
+	padding: 5px 0px 5px 0px;
+}
+.squareBoard{
+	border:1px #eeeeee solid;
+	margin-bottom:5px;
+}
+.squareBoard tbody td{
+	border-top:1px #eeeeee dashed;
+}
+/*title of the square*/
+.squareBoardTitle{	
+	font-weight:bold;
+	BACKGROUND: #eeeeee;
+	color:#333333;
+}
+.iconTitle {
+	width: 50px;
+}
+.subjectTitle {
+	width: 500px;
+}
+.releaseTimeTitle {
+	width: 150px;
+}
+.releasePersonTitle {
+	width: 60px;
+}
+.deletePost {
+	width: 30px;
+}
+/*square Post*/
+#squarePost{
+}
+.post {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	font-weight: normal;
+	color: #000000;
+	float:right;
+	margin-bottom:5px;
+}
+.post thead td {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 14px;
+	font-weight: bold;
+	color: #000000;
+	padding-top: 3px;
+	padding-bottom: 3px;
+	padding-left: 5px;
+	border-bottom: 1px #dddddd solid;
+}
+.postForm{
+	margin-top:5px;
+	margin-bottom:5px;
+	padding-bottom:5px;
+	text-align:right;
+	vertical-align:middle;
+}
+.postInfo{	
+	BORDER-BOTTOM: #d8dfea 1px solid;
+	vertical-align:top;
+}
+.postPost{
+	margin-top:5px;
+}
+.postTitle{
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 14px;
+	font-weight: bold;
+	color: #000000;
+	padding-top: 3px;
+}
+.postImage{
+	vertical-align:top;
+	padding-left:5px;
+	padding-right:5px;
+	width:65px;
+}
+.postImage img{
+	width:65px;
+}
+.postHeader{
+	PADDING: 3px 5px 3px 5px;
+	color:#999999;
+	BACKGROUND: #eeeeee;
+	BORDER-TOP: #999999 1px solid;
+	BORDER-BOTTOM: #dddddd 1px solid;
+}
+.postHeader strong{
+	color:#999999;	
+}
+.postText{
+	PADDING-RIGHT: 5px;
+	PADDING-LEFT: 5px;
+	PADDING-BOTTOM: 5px;
+	PADDING-TOP: 5px;
+}
+.postActions{
+	PADDING-RIGHT: 5px;
+	PADDING-LEFT: 5px;
+	PADDING-BOTTOM: 3px;	
+	PADDING-TOP: 3px;	
+}

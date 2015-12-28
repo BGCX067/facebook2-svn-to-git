@@ -1,0 +1,24 @@
+<%
+    @CSSs =["index.css","form.css"]
+    @location = "封侯加爵"
+    @currentTab = "home"
+%>
+<%= form_tag({:action => :addToVip,:id=>@params[:id]} ,:multipart => true)%>
+<div id="form">	
+	<div class="subFormDesc">
+		将用户转为VIP用户，这样可以让用户上传空间达到1G。</div>
+
+	<table class="subForm" cellpadding="0" cellspacing="5">
+		<tr>
+			<th>用户：</th>
+			<td><%= text_field "user", "username",:size=>50%></td>
+		</tr>
+	</table>
+	<div id="alertPanel"></div>
+	<table cellpadding="0" cellspacing="5" align="center">
+		<tr>
+			<td><%=submit_tag "加为VIP",:class=>"btn"%></td>
+		</tr>
+	</table>
+</div>
+<%= end_form_tag %>

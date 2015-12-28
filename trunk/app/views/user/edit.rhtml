@@ -1,0 +1,73 @@
+﻿<%= form_tag({:action => :updateProfile,:id=>@params[:id]} ,:multipart => true)%>
+<div id="form">	
+	<div class="subFormTitle">
+		个人信息
+	</div>
+	<div class="subFormDesc">
+		在这里您可以修改您的个人信息。以保障朋友对您的更多了解。</div>
+
+	<table class="subForm" cellpadding="0" cellspacing="5">
+		<tr>
+			<th>真实姓名：</th>
+			<td><%= text_field 'userDetail', 'realname'  %></td>
+		</tr>
+		<tr>
+			<th>性别：</th>
+			<td><%= select("userDetail", "sex", %w{男 女}) %></td>
+		</tr>
+		<tr>
+			<th>生日：</th>
+			<td>
+			<%= date_select("userDetail","birthday",:start_year=>1960,:end_year=>2000,:use_month_numbers=>true)%>
+            </td>
+		</tr>
+		<tr>
+			<th>家乡：</th>
+			<td><%=text_field("userDetail","hometown",:size=>50)%></td>
+		</tr>
+		
+		<tr>
+			<th>毕业院校：</th>
+			<td><%=text_field("userDetail","school",:size=>50)%></td>
+		</tr>
+		
+		<tr>
+			<th>职业：</th>
+			<td><%=text_field("userDetail","job",:size=>50)%></td>
+		</tr>
+		<tr>
+			<th>星座：</th>
+			<td><%=select("userDetail", "astro", %w{白羊座 金牛座 双子座 巨蟹座 狮子座 处女座 天秤座 天蝎座 射手座 摩羯座 水瓶座 双鱼座} )%></td>
+		</tr>
+		
+		<tr>
+			<th>生肖：</th>
+			<td><%=select("userDetail", "sign", %w{鼠 牛 虎 兔 龙 蛇 马 羊 猴 鸡 狗 猪} )%></td>
+		</tr>
+		
+		<tr>
+			<th>QQ号：</th>
+			<td><%=text_field("userDetail","qq",:size=>50)%></td>
+		</tr>
+		
+		<tr>
+			<th>兴趣爱好：</th>
+			<td><%=text_field("userDetail","interest",:size=>50)%></td>
+		</tr>
+		
+		<tr>
+			<th>个人说明：</th>
+			<td><%=text_area("userDetail","intro",:cols=>36,:rows=>5)%></td>
+		</tr>
+		<tr>
+			<th>个人头像：</th>
+			<td><%=file_field("userDetail","portrait",:cols=>36,:rows=>5)%></td>
+		</tr>				
+	</table>
+	<table cellpadding="0" cellspacing="5" align="center">
+		<tr>
+			<td><%=submit_tag "修 改",:class=>"btn"%></td>
+		</tr>
+	</table>
+</div>
+<%= end_form_tag %>

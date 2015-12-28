@@ -1,0 +1,5 @@
+<%= form_remote_tag(:update => "bContent", 
+                    :url => { :action => :updateBulletin ,:id=>@group.id} )%>
+<%=text_area "group","bulletin",:style=>"width:370px",:rows=>6 %>
+<%=submit_tag "修改",:class=>"btn"%>
+<%= end_form_tag %>

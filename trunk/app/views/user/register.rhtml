@@ -1,0 +1,134 @@
+<%= form_remote_tag(:update => "alertPanel", 
+                    :url => { :action => :create } ) %>
+<div id="form">
+    <div id="formDesc">
+        您将会在一分钟内注册完，我们更希望的是尽快让您来一起享受FaceBook给您带了的快乐。
+    </div>
+        
+    <div class="subFormTitle">
+        登陆信息
+    </div>
+    <div class="subFormDesc">
+        登录信息就是您的帐户信息。请保管好您的用户名和密码信息。
+    </div>    
+    <table class="subForm" cellpadding="0" cellspacing="5">
+        <tr>
+            <th>
+                用户名：</th>
+            <td>
+                <%=text_field("user","username",:size=>50) %><br />
+                请填写您的用户名。
+            </td>
+        </tr>
+        <tr>
+            <th>
+                密码：</th>
+            <td>
+                <%=password_field("user","password",:size=>51) %><br />
+                密码非常重要。</td>
+        </tr>
+        <tr>
+            <th>
+                确认密码：</th>
+            <td>
+                <%=password_field("user","password_confirmation",:size=>51)%>
+            </td>
+        </tr>
+        <tr>
+            <th>
+                Email：</th>
+            <td>
+                <%=text_field("user","email",:size=>50) %></td>
+        </tr>
+    </table>
+    <div class="subFormTitle">
+        个人信息
+    </div>
+    <div class="subFormDesc">
+        个人信息的填写帮助你的朋友更快找到你，认识你。
+    </div>
+    <table class="subForm" cellpadding="0" cellspacing="5">
+        <tr>
+            <th>
+                真实姓名：</th>
+            <td>
+                <%=text_field("userDetail","realname",:size=>50)%></td>
+        </tr>
+        <tr>
+            <th>
+                性别：</th>
+            <td>
+               <%= select("userDetail", "sex", %w{男 女}) %>
+            </td>
+        </tr>
+        <tr>
+            <th>
+                生日：</th>
+            <td>
+               <%= date_select("userDetail","birthday",:start_year=>1960,:end_year=>2000,:use_month_numbers=>true)%>
+            </td>
+        </tr>
+        <tr>
+            <th>
+                家乡：</th>
+            <td>
+                <%=text_field("userDetail","hometown",:size=>50)%></td>
+        </tr>
+        <tr>
+            <th>
+                毕业院校：</th>
+            <td>
+                <%=text_field("userDetail","school",:size=>50)%></td>
+        </tr>
+        <tr>
+            <th>
+                职业：</th>
+            <td>
+                <%=text_field("userDetail","job",:size=>50)%></td>
+        </tr>
+        <tr>
+            <th>
+                星座：</th>
+            <td>
+                <%=select("userDetail", "astro", %w{白羊座 金牛座 双子座 巨蟹座 狮子座 处女座 天秤座 天蝎座 射手座 摩羯座 水瓶座 双鱼座} )%>
+            </td>
+        </tr>
+        <tr>
+            <th>
+                生肖：</th>
+            <td>
+                <%=select("userDetail", "sign", %w{鼠 牛 虎 兔 龙 蛇 马 羊 猴 鸡 狗 猪} )%>
+            </td>
+        </tr>
+        <tr>
+            <th>
+                QQ号：</th>
+            <td>
+                <%=text_field("userDetail","qq",:size=>50)%></td>
+        </tr>
+        <tr>
+            <th>
+                兴趣爱好：</th>
+            <td>
+                <%=text_field("userDetail","interest",:size=>50)%></td>
+        </tr>
+        <tr>
+            <th>
+                个人说明：</th>
+            <td>
+                <%=text_area("userDetail","intro",:cols=>36,:rows=>5)%>
+            </td>
+        </tr>
+    </table>
+    <div id="alertPanel">
+    </div>
+    
+    <table cellpadding="0" cellspacing="5" align="center">
+        <tr>
+            <td>
+                <%= submit_tag "注 册" , :class=>"btn"%>
+            </td>
+        </tr>
+    </table>
+</div>
+<%= end_form_tag %>

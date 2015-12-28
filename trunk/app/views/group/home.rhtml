@@ -1,0 +1,80 @@
+<%@location=@group.name%>
+<div id="groupLeft">
+    <div id="groupPortrait">
+        <% if @group.portrait!="" %>
+        <img src="/uploads/groupPortrait/<%=@group.portrait%>" alt="<%=@group.name%>" />
+        <% else %>
+        <img src="/img/default_portrait.jpg" alt="<%=@group.name %>" />
+        <% end %>
+    </div>
+    <div id="groupProfile">
+        <table class="columnHeader" width="100%" cellspacing="0" cellpadding="5">
+            <tr>
+                <td>
+                    <div class="columnTitle">
+                        圈子基本信息
+                    </div>
+                    <div class="btnEdit">
+                    <% if isCreator %>
+                        <%=link_to "修改",:controller=>"group",:action=>"edit",:id=>@params[:id]%>
+                    <% end %>
+                    </div>
+                </td>
+            </tr>
+        </table>
+        <table width="100%" cellspacing="5" cellpadding="0">
+            <tr>
+                <th>
+                    创建人</th>
+                <td>
+                  <%=@group.creator.username%></td>
+            </tr>
+            <tr>
+                <th>
+                    成立时间</th>
+                <td>
+                  <%=@group.createDatetime.strftime('%Y-%m-%d at %I:%M%p')%></td>
+            </tr>
+            <tr>
+                <th>
+                    我们关注</th>
+                <td>
+                    <%=@group.interesting%></td>
+            </tr>                
+            <tr>
+                <th>
+                    圈子描述</th>
+                <td>
+                    <%=@group.intro%></td>
+            </tr>                
+        </table>
+    </div>
+    <div id="controlPanel">
+        <table cellspacing="5" cellpadding="0" style="width: 100%">
+            <tr>
+                <td>
+                    <ul id="controlPanelBtn">
+                        <li><a href="#">立刻加入</a></li>
+                        <li><a href="#">立刻离开</a></li>
+                        <li><a href="#">组员通知</a></li>
+                        <li><a href="#">管理圈子</a></li>
+                    </ul>
+                </td>
+            </tr>
+        </table>
+    </div>
+</div>
+<!--End of homeLeft-->
+<div id="groupRight">
+	<div id="bulletin">
+    	<div id="bTitle"><%=@group.name%>圈子的公告
+    	<% if isCreator %>
+    	<%=link_to_remote "修改",:update => "bContent",
+    	                        :url => {:controller=>:group,:action=>:editBulletin,:id=>@params[:id]} %>
+    	<% end %>
+    	</div>
+    	<div id="bContent">
+    	<%=@group.bulletin%></div>
+	</div>    
+    <%=render_partial("/message/groupMessageList")%>
+</div>

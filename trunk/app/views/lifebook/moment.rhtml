@@ -1,0 +1,142 @@
+<% if not isHost %>
+<div id="guideBar">
+    <%=link_to "返回 - 查看所有",:action=>"friendLifebooks",:id=>session[:user].id %>
+</div>
+<% end %>
+<% if session[:isRotated] %>
+<script>window.location.reload();</script>
+<% session[:isRotated]=false %>        
+<% end %>
+<% photo_id = 0%>
+<div class="myLifebook">
+    <a name="title"></a>
+    <% for @photo in @photos %>
+    <% photo_id = @photo.id %>
+    <table cellspacing="5" cellpadding="0" width="100%">
+        <thead>
+            <tr>
+                <th>
+                    <div class="lifebookTitle">
+                        <%= link_to @photo.takeDatetime.strftime('%Y-%m-%d'),:action=>"day",:id=>@params[:id],:diary_id=>@params[:diary_id] %></a>
+                        <%= @photo.takeDatetime.strftime('%I:%M%p') %>
+                    </div>
+                    <div class="imgBtnEdit">
+                        <% if isHost %>
+                        <%= link_to image_tag('/img/rotating_image_left.jpg', {:border=>0,:alt => '逆时针旋转图片'}), :action => 'rotate', :id=>@params[:id],:photo_id=>@photo.id,:diary_id=>@params[:diary_id],:page=>@params[:page],:direction => 'left' %>
+                        <%= link_to image_tag('/img/rotating_image_right.jpg', {:border=>0,:alt => '顺时针旋转图片'}), :action => 'rotate', :id=>@params[:id],:photo_id=>@photo.id,:diary_id=>@params[:diary_id],:page=>@params[:page],:direction => 'right' %>
+                        <%= link_to image_tag('/img/image_delete.jpg',{:border=>0,:alt => '顺时针旋转图片'}),:action=>"deletePhoto",:id=>@params[:id],:photo_id=>@photo.id,:diary_id=>@params[:diary_id],:page=>@params[:page]%>
+                        <% end %>
+                    </div>
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td align="left">
+                    <% if isHost %>
+                    <div id="desc" class="photoDesc">
+                    <% if @photo.description=="" %>
+                        点击这里添加描述！
+                    <% else %>
+                    <%= @photo.description %>
+                    <% end %>
+                    </div>
+                    <script type="text/javascript">
+                        //<![CDATA[
+                        new Ajax.InPlaceEditor('desc', '/lifebook/updatePhotoDescription/<%= @photo.id %>', {okText:'保存',cancelText:'取消',savingText:'正在保存...',clickToEditText:'点击修改描述。',submitOnBlur:true,cols:77,rows:5,callback: function(form, value) { return 'desc=' + value}})
+                        //]]>
+                    </script>
+                    <% else %>
+                    <%= @photo.description %>
+                    <% end %>
+                </td>
+            </tr>
+        </tbody>
+        <tfoot>
+            <tr>
+                <td align="center">
+                    <a href = '/lifebook/moment/<%=@params[:id]%>?diary_id=<%=@diary.id%>&page=<%=getNextPage(@params[:page],@photo_pages)%>#title' >
+                        <img id="lifebookMomentPic" src="/uploads/momentView/<%=@photo.takeDatetime.strftime('%Y-%m-%d')%>/<%= @photo.filename %>" alt="点击进入下一张图片" />
+                    </a>
+                </td>
+            </tr>
+        </tfoot>
+    </table>
+    <% end %>
+    <div class="pager">
+        <ul>
+            <% for page in @photo_pages %>
+                <%=
+                if page==@photo_pages.current()
+                    "<li class='currentPage'>#{page.number}</li>"
+                else
+                    "<li><a href = '#{@params[:id]}?diary_id=#{@diary.id}&page=#{page.number}#title' >#{page.number}</a></li>"
+                end
+                %>
+            <% end %>
+        </ul>
+    </div>
+    <div id="comment">
+        <% for message in @photos[0].quotingMessages %>
+        <table id="post" class="wallPost" cellspacing="0" width="100%" border="0">
+            <tr>
+                <td class="wallImage">
+                    <% if message.sender.userDetail.portrait!="" %>
+                    <img src="/uploads/userPortrait/<%=message.sender.userDetail.portrait %>" alt="<%=message.sender.username %>" />
+                    <% else %>
+                    <img src="/img/default_portrait_s1.jpg" alt="<%=message.sender.username %>" />
+                    <% end %>
+                </td>
+                <td class="wallInfo">
+                    <div class="wallHeader">
+                        <a class="profile_link" href="/home/index/<%=message.sender_id%>">
+                            <%=message.sender.username%></a>&nbsp; 说道<%= isPrivate(message.isPrivate)%><br />
+                        <small>
+                        <%=message.sendDatetime.strftime("%Y-%m-%d %I:%M%p")%>                
+                        </small>
+                    </div>
+                    <div class="wallText">
+                        <%=message.content%></div>
+                    <div class="wallActions">
+                        <%= link_to "回复",:controller=>"message",:action=>"chat",:id=>message.receiver.id,:friend_id=>message.sender.id%>
+                         - 
+                        <%= link_to "引用",:controller=>"message",:action=>"chat",:id=>message.receiver.id,:friend_id=>message.sender.id,:quote_messageId=>message.id%>
+                        <% if session[:user] and ((message.sender.id==session[:user].id) or isHost) %>
+                         - <%=link_to "删除",:controller=>:message,:action=>:delete,:message_id=>message.id,:receiver_id=>message.receiver_id %>
+                        <% end %>
+                    </div>
+                </td>
+            </tr>
+        </table>
+        <% end %>
+        
+        <!--发送表单-->
+        <%= javascript_include_tag :fckeditor %>
+        <script type="text/javascript">
+        window.onload = function()
+        {
+            var oFCKeditor = new FCKeditor('message_content', '100%', '120', 'Basic', '' );
+            oFCKeditor.ReplaceTextarea();
+        }
+        </script>
+        <%= form_tag(:controller => "message",:action => "Send")%>
+        <table width="100%" cellspacing="3" cellpadding="0">
+            <tr>
+                <td>
+                    <%=text_area "message","content",:cols=>77,:rows=>4 %>                                               
+                </td>
+            </tr>
+            <tr>
+                <td align="right">
+                    <label for="message_isPrivate">
+                         <%= check_box("message","isPrivate",{},"true", "false") %>私秘
+                    </label>
+                    <%= submit_tag "提交",:class=>"btn"%>
+                </td>
+            </tr>
+        </table>
+        <%= hidden_field(:message, :quote_photo_id, :value=>photo_id)%>
+        <%= hidden_field(:message, :receiver_id, :value=>@params[:id])%>
+        <%= end_form_tag %>
+    </div>
+</div>

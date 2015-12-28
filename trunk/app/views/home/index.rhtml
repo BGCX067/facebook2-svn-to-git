@@ -1,0 +1,47 @@
+<div id="homeLeft">
+    <div id="myPortrait">
+        <% if @user.userDetail.portrait.length>0 %>
+        <img src="/uploads/userPortrait/<%=@user.userDetail.portrait %>" alt="<%=@user.username %>" />
+        <% else %>
+        <img src="/img/default_portrait.jpg" alt="<%=@user.username %>" />
+        <% end %>
+    </div>
+    <!--控制面板-->
+    <div id="controlPanel">
+        <table cellspacing="5" cellpadding="0" style="width: 100%">
+            <tr>
+                <td>
+                    <ul id="controlPanelBtn">
+                        <% if isFriend(@params[:id]) and @user!=session[:user] %>
+                        <li><%= link_to "开始聊天",:controller=>"message",:action=>"chat",:id=>@params[:id],:friend_id=>session[:user].id %></li>
+                        <li><%=link_to "感情破裂了",:controller=>"friend",:action=>"delete",:friend_id=>@params[:id],:id=>session[:user].id %></li>
+                        <% elsif not isFriend(@params[:id]) %>
+                        <li><%=link_to "加为好友",:controller=>"friend",:action=>"addFriend",:friend_id=>@params[:id],:id=>session[:user].id %></li>
+                        <li><%= link_to "开始聊天",:controller=>"message",:action=>"chat",:id=>@params[:id],:friend_id=>session[:user].id %></li>
+                        <% end %>
+                    </ul>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <% if isAbleToUse(session[:user],"profile") %>
+        <%=render(:partial=>"/user/profile")%>
+    <% else %>
+        <% @alertMessage = "您无权查看个人信息！"%>
+        <%=render(:partial=>"/alertPanel") %>
+    <% end %>
+</div>
+<!--End of homeLeft-->
+
+<!--Start of homeRight-->
+<div id="homeRight">
+    <%=render_partial("/blog/list")%>	
+    <div id="chatBoard">
+    <% if isAbleToUse(@user,"message")%>
+	<%=render(:partial=>"/message/list") %>
+    <% else %>
+        <% @alertMessage = "您无权查看聊天板！"%>
+        <%=render(:partial=>"/alertPanel") %>
+    <% end %>
+    </div>
+</div>

@@ -1,0 +1,299 @@
+.noLifebookAlert{
+    padding:0px;
+    margin-top:10px;
+}
+.noLifebookAlertPanel {
+	background: #FFFBE2;
+	border: 1px #ffe222 solid;
+	margin: 0px auto 5px auto;
+	width: auto;
+	padding: 10px 10px 10px 10px;
+	font-weight: bold;
+	font-size: 14px;
+	color: black;
+}
+﻿#lifebookLeft {
+	float: left;
+	width: 240px;
+	margin-right: 5px;
+}
+#lifebookRight {
+	float: right;
+	width: 340px;
+	padding-left:5px;
+	border-left:1px #dddddd dotted;
+}
+.columnHeader {
+	border-top: 1px #999999 solid;
+	border-bottom: 1px #dddddd solid;
+	background-color: #eeeeee;
+}
+.photoDesc{
+    padding:5px;
+}
+/*子面板*/
+.panel{
+	width:98%;
+	padding:5px 5px 5px 5px;
+	border:1px #dddddd solid;
+}
+.panelTitle{
+	margin-bottom: 3px;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	font-weight: bold;
+	color: #000000;
+}
+.panel ul{
+	list-style-type:none;
+	width:100%;
+	margin:3px 0px 0px 0px;
+	display:inline;
+}
+.panel li{
+	float:left;	
+	margin-right:2px;
+	margin-bottom:2px;
+}
+.panel a {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	color: #000080;	
+	BACKGROUND: #ffffff;
+	text-decoration: none;	
+	PADDING: 2px 5px 2px 5px;	
+	DISPLAY: block;	
+	border:1px #dddddd solid;
+	white-space:nowrap;
+}
+.panel a:hover {	
+	COLOR: white;
+	BACKGROUND: #3b5998;
+	TEXT-DECORATION: none;	
+	DISPLAY: block;	
+}
+
+/*我的生命卷*/
+.myLifebook {
+	margin-bottom:5px;
+	float:left;
+}
+.myLifebook .day{
+	width:100%;
+}
+.myLifebook #picList {
+	margin-left: 0px;
+}
+.myLifebook #picList li {
+	list-style: none;
+	float: left;
+	width: 70px;
+	display: block;
+	margin-left: 3px;
+	margin-bottom: 3px;
+	padding: 3px 3px 3px 3px;
+	border: 1px #dddddd solid;
+}
+.myLifebook #picList li div {
+	width: 70px;
+	height: 80px;
+	overflow: hidden;
+}
+.myLifebook #picList li p {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 10px;
+	font-weight: normal;
+	color: #666666;
+	width: 100%;
+	margin-top: 2px;
+}
+/*头：中间的日期，体：字，尾：图片*/
+.myLifebook thead th {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	font-weight: bold;
+	color: #333333;
+	border-top:1px #dddddd dashed;
+	padding:3px 0px 3px 3px;
+}
+.myLifebook tfoot td {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	font-weight: normal;
+	color: #666666;
+	margin-bottom: 5px;
+}
+/*最新好友生命卷*/
+#friendLifebook {	
+	margin-bottom:5px;
+}
+#friendLifebook .lifebookList{	
+	border-bottom:1px #dddddd dashed;
+}
+#friendLifebook .picList {
+	margin-left: 0px;
+}
+#friendLifebook .picList li {
+	list-style: none;
+	float: left;
+	width: 64px;
+	display: block;
+	margin-left: 3px;
+	margin-bottom: 3px;
+	padding: 3px 3px 3px 3px;
+	border: 1px #dddddd solid;
+}
+#friendLifebook .picList li div {
+	width: 64px;
+	height: 80px;
+	overflow: hidden;
+}
+#friendLifebook .picList li p {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 10px;
+	font-weight: normal;
+	color: #666666;
+	width: 100%;
+	margin-top: 2px;
+}
+/*朋友名字链接*/
+#friendLifebook thead a {
+	COLOR: #3b5998;
+	TEXT-DECORATION: none;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	text-decoration: none;
+	padding: 3px 5px 3px 5px;
+}
+#friendLifebook thead a:hover {
+	BACKGROUND: #3b5998;
+	COLOR: white;
+	TEXT-DECORATION: none;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+}
+/*头：中间的日期，体：字，尾：图片*/
+#friendLifebook .lifebookList{
+	padding-bottom:5px;
+	border-bottom:1px #dddddd dashed;
+}
+#friendLifebook thead th {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	font-weight: bold;
+	color: #333333;
+}
+#friendLifebook thead td {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	font-weight: normal;
+	color: #333333;
+}
+#friendLifebook tfoot td {
+	margin-bottom: 5px;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	font-weight: normal;
+	color: #666666;
+}
+#lifebookMomentPic{
+	border:1px #dddddd solid;
+	padding:5px 5px 5px 5px;	
+}
+#comment{
+	width:100%;
+}
+/*lifebook day*/
+/*我的生命卷*/
+.myLifebook {
+	float: left;
+}
+.lifebookTitle{
+    float: left;
+	color: #999999;
+}
+.diaryDate{
+    float: left;
+}
+.diaryTitle{
+    font-size:12px;
+    color: #cccccc;
+    padding:5px;
+    margin-left:5px;
+}
+/*头：中间的日期，体：字，尾：图片*/
+.myLifebook thead th {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	font-weight: bold;
+	color: #333333;
+	border-top: 1px #dddddd dashed;
+	padding: 3px 0px 3px 3px;
+}
+.myLifebook table tbody {
+	padding-left: 5px;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	font-weight: normal;
+	color: #666666;
+}
+.myLifebook tfoot th {
+	padding-top:5px;
+	border-top:1px #dddddd dashed;
+}
+.quickViewPhotoList TD {
+	PADDING: 3px 2px 3px 2px;
+	VERTICAL-ALIGN: middle;
+	TEXT-ALIGN: center;
+	vertical-align:top;
+}
+.quickViewPhotoList a IMG {
+	BORDER: #ccc 1px solid;
+	PADDING: 5px 5px 5px 5px;
+	BACKGROUND: white;
+	WIDTH: 96px;
+}
+.quickViewPhotoList a:hover IMG {
+	BORDER: #3b5998 1px solid;
+}
+.quickViewPhotoList div {
+	text-align:left;
+	padding-left: 5px;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 10px;
+	font-weight: normal;
+	color: #666666;
+	margin-bottom: 5px;
+}
+.photoList TD {
+	PADDING: 3px 2px 3px 2px;
+	VERTICAL-ALIGN: middle;
+	TEXT-ALIGN: center;
+	vertical-align:top;
+}
+.photoList a IMG {
+	BORDER: #ccc 1px solid;
+	PADDING: 5px 5px 5px 5px;
+	BACKGROUND: white;
+	WIDTH: 135px;
+}
+.photoList a:hover IMG {
+	BORDER: #3b5998 1px solid;
+}
+.photoList div {
+	text-align:left;
+	padding-left: 5px;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 10px;
+	font-weight: normal;
+	color: #666666;
+	margin-bottom: 5px;
+}
+/*添加lifebook*/
+.addLifebook{
+	padding:5px;
+	margin-top:5px;
+	border:1px #dddddd solid;
+	font-size:12px;
+	color:#666666;
+}

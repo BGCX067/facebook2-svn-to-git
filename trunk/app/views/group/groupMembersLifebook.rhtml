@@ -1,0 +1,84 @@
+<div class="myLifebook">        
+    <% for diary in @diaries %>
+    <% count=1 %>
+    <table class="day" cellspacing="5" cellpadding="0">
+        <thead>
+            <tr>
+                <th>
+                    <div class="lifebookTitle">
+                        <span class="diaryDate">
+                            <%= link_to diary.date,:action=>"day",:id=>diary.user.id,:diary_id=>diary.id %>
+                        </span>
+                        by 
+                        <%= link_to diary.user.username,:controller=>"home",:action=>"index",:id=>diary.user.id %>
+                        <%= diary.title %>
+                         - 共<span class="redNum"><%= getTodayPicsNum(diary.date,diary.user.id) %></span>张
+                    </div>
+                    <div class="btnEdit">
+                        <%= link_to "查看更多",:action=>"day",:id=>diary.user.id,:diary_id=>diary.id %>
+                    </div>
+                </th>
+            </tr>
+        </thead>
+        <tfoot>
+            <tr>
+                <td align="left">
+                    <%= diary.content %>
+                </td>
+            </tr>
+            <tr>
+                <td align="center">
+                    <table class="photoList">
+                        <tr>
+                        <% @pics = getTodayPicByNum(diary.date,8,diary.user.id) %>
+                        <% pageNum=1%>
+                        <% for pic in @pics%>
+                            <% if count%4 != 1 and count!=1 %>                       
+                            <td>
+                                <a href="/lifebook/moment/<%=diary.user.id%>?diary_id=<%=diary.id%>&page=<%=pageNum%>">
+                                    <img width=100 src="/uploads/thumb/<%=pic.takeDatetime.strftime('%Y-%m-%d')%>/<%=pic.filename%>" alt="<%=pic.takeDatetime.strftime('%I:%M%p')%>" />
+                                </a>
+                                <div>
+                                    <%=pic.takeDatetime.strftime('%I:%M%p')%>
+                                    <%= pic.description %>
+                                </div>
+                            </td>
+                            <% else %>
+                            </tr>
+                            <tr>
+                            <td>
+                                <a href="/lifebook/moment/<%=diary.user.id%>?diary_id=<%=diary.id%>&page=<%=pageNum%>">
+                                    <img width=100 src="/uploads/thumb/<%=pic.takeDatetime.strftime('%Y-%m-%d')%>/<%=pic.filename%>" alt="<%=pic.takeDatetime.strftime('%I:%M%p')%>" />
+                                </a>
+                                <div>
+                                    <%=pic.takeDatetime.strftime('%I:%M%p')%>
+                                    <%= pic.description %>
+                                </div>
+                            </td>                            
+                            <% end %>
+                            <%
+                                count +=1
+                                pageNum+=1
+                            %>
+                        <% end%>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+        </tfoot>
+    </table>
+    <% end %>
+    <div class="pager">
+        <ul>
+            <% for page in @diary_pages %>
+                <%=
+                if page==@diary_pages.current()
+                    "<li class='currentPage'>#{page.number}</li>"
+                else
+                    "<li><a href = '#{diary.user.id}?page=#{page.number}' >#{page.number}</a></li>"
+                end
+                %>
+            <% end %>
+        </ul>
+    </div>
+</div>

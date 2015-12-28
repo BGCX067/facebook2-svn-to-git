@@ -1,0 +1,86 @@
+<%@location=@group.name+" 成员"%>
+<div id="friendList">
+    <table class="friend" cellspacing="0" cellpadding="0" width="100%" border="0">
+        <tr>
+            <td class="friendImage">
+                <% if @group.creator.userDetail.portrait!="" %>
+                <img src="/uploads/userPortrait/<%=@group.creator.userDetail.portrait %>" alt="<%=@group.creator.username %>" />
+                <% else %>
+                <img src="/img/default_portrait_s.jpg" alt="<%=@group.creator.username %>" />
+                <% end %>
+            </td>
+            <td valign="top">
+                <div class="friendContent">
+                    <div class="friendName">
+                        <%=link_to @group.creator.username,:controller=>"home",:action=>"index",:id=>@group.creator.id%> 创建人
+                    </div>
+                    <div class="friendInfo">
+                        <%=@group.creator.userDetail.sex%> 生日:<%=@group.creator.userDetail.birthday%> <%=@group.creator.userDetail.hometown%> Email:<%=@group.creator.email%></div>
+                    <div class="findFriendIntro">
+                        <%=@group.creator.userDetail.intro %>
+                    </div>
+                </div>
+            </td>
+            <td class="friendActionColumn">
+                <ul class="friendActionList">
+                    <li><%=link_to "查看主页",:controller=>"home",:action=>"index",:id=>@group.creator.id%></li>
+                    <% if not isFriend(@group.creator.id) %>
+                    <li><%=link_to "加为好友",:controller=>"friend",:action=>"addFriend",:friend_id=>@group.creator.id,:id=>session[:user].id %></li>
+                    <% end %>
+                </ul>
+            </td>
+        </tr>
+    </table>
+    <% for member in @members %>
+    <% member = User.find(member.user_id) %>
+    <table class="friend" cellspacing="0" cellpadding="0" width="100%" border="0">
+        <tr>
+            <td class="friendImage">
+                <% if member.userDetail.portrait!="" %>
+                <img src="/uploads/userPortrait/<%=member.userDetail.portrait %>" alt="<%=member.username %>" />
+                <% else %>
+                <img src="/img/default_portrait_s.jpg" alt="<%=member.username %>" />
+                <% end %>
+            </td>
+            <td valign="top">
+                <div class="friendContent">
+                    <div class="friendName">
+                        <%=link_to member.username,:controller=>"home",:action=>"index",:id=>member.id%>
+                        <% if member==session[:user]%>
+                            我自己
+                        <% elsif isFriend(member.id)%>
+                            我朋友
+                        <% end %>
+                    </div>
+                    <div class="friendInfo">
+                        <%=member.userDetail.sex%> 生日:<%=member.userDetail.birthday%> <%=member.userDetail.hometown%> Email:<%=member.email%></div>
+                    <div class="findFriendIntro">
+                        <%=member.userDetail.intro %>
+                    </div>
+                </div>
+            </td>
+            <td class="friendActionColumn">
+                <ul class="friendActionList">
+                    <li><%=link_to "查看主页",:controller=>"home",:action=>"index",:id=>member.id%></li>
+                    <% if not isFriend(member.id) %>
+                    <li><%=link_to "加为好友",:controller=>"friend",:action=>"addFriend",:friend_id=>member.id,:id=>session[:user].id %></li>
+                    <% end %>
+                </ul>
+            </td>
+        </tr>
+    </table>
+    <% end %>
+    <div class="pager">
+        <ul>
+            <% for page in @member_pages %>
+                <%=
+                if page==@member_pages.current()
+                    "<li class='currentPage'>#{page.number}</li>"
+                else
+                    "<li><a href = '?page=#{page.number}' >#{page.number}</a></li>"
+                end
+                %>
+            <% end %>
+        </ul>
+    </div>
+</div>

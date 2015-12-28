@@ -1,0 +1,110 @@
+<%= javascript_include_tag :fckeditor %>
+<script type="text/javascript">
+window.onload = function()
+{
+    var oFCKeditor = new FCKeditor('message_content', '100%', '120', 'Basic', '' );
+    oFCKeditor.ReplaceTextarea();
+}
+</script>
+<div id="groupWall">
+    <table class="columnHeader" width="100%" cellspacing="0" cellpadding="5">
+        <tr>
+            <td>
+                <div class="columnTitle">
+                    圈子聊天板</div>
+            </td>
+        </tr>
+    </table>
+    <div id="wallPosts">
+    <!--发送表单-->
+    <%= form_tag(:controller => "Group_Message",:action => "Send") %>
+    <table class="wallPostForm" width="100%" cellspacing="3" cellpadding="0">
+        <tr>
+            <td>
+            <% if @quoteMessage %>
+            <div class="wallQuoteDisplay">
+				<strong>引用内容:</strong>
+				<div class="wallQuoteFromDisplay">
+				<%=@quoteMessage.sender.username %> <%=@quoteMessage.sendDatetime.strftime("%Y-%m-%d %I:%M%p")%> 说道
+				</div>
+				<div class="wallQuoteContentDisplay">
+				<%=@quoteMessage.content %>
+				</div>
+			</div>
+			<%=hidden_field(:message, :quote_message_id, :value=>@quoteMessage.id)%>
+			<% end %>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <%=text_area "message","content",:cols=>46,:rows=>4 %>                                               
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <%= submit_tag "提交",:class=>"btn"%>
+            </td>
+        </tr>
+    </table>
+    <%=hidden_field(:message, :group_id, :value=>@params[:id])%>
+    <%= end_form_tag %>
+    <% for message in @messages%>
+    <table class="wallPost" cellspacing="0" width="100%" border="0">
+        <tr>
+            <td class="wallImage">
+                <% if message.sender.userDetail.portrait!="" %>
+                <img src="/uploads/userPortrait/<%=message.sender.userDetail.portrait %>" alt="<%=message.sender.username %>" />
+                <% else %>
+                <img src="/img/default_portrait_s.jpg" alt="<%=message.sender.username %>" />
+                <% end %>
+            </td>
+            <td class="wallInfo">
+                <div class="wallHeader">
+                    <a class="profile_link" href="/home/index/<%=message.sender_id%>">
+                    <%=message.sender.username%></a>&nbsp; 说道<br />
+                    <small>
+                    <%=message.sendDatetime.strftime("%Y-%m-%d %I:%M%p")%>                
+                    </small>
+                </div>
+                <% if message.quotedMessage %>
+                <div class="wallQuote">
+					<strong>引用消息:</strong>
+					<div class="wallQuoteFrom">
+					  <%=message.quotedMessage.sender.username %>
+                      <%=message.quotedMessage.sendDatetime.strftime("%Y-%m-%d %I:%M%p")%> 说道
+					</div>
+					<div class="wallQuoteContent">
+					  <%=message.quotedMessage.content %>
+					</div>
+				</div>
+                <% end %>
+                <div class="wallText">
+                    <%=message.content%></div>
+                <div class="wallActions">
+                    <% if session[:user].id != message.sender.id %>
+                    <a href="/message/chat/<%=session[:user].id%>?friend_id=<%=message.sender.id.to_s%>">回复</a> - 
+                    <% end %>
+                    <%= link_to "引用",:action=>"home",:id=>message.group_id,:quote_messageId=>message.id%>
+                    <% if isCreator or (session[:user].id == message.sender.id) %>
+                     - <%=link_to("删除",:controller=>:group_message,:action=>:delete,:message_id=>message.id,:group_id=>message.group_id)%>
+                    <% end %>
+                </div>
+            </td>
+        </tr>
+    </table>
+    <% end %>
+    <div class="pager">
+        <ul>
+            <% for page in @message_pages %>
+                <%=
+                if page==@message_pages.current()
+                    "<li class='currentPage'>#{page.number}</li>"
+                else
+                    "<li><a href = '#{@params[:id]}?page=#{page.number}' >#{page.number}</a></li>"
+                end
+                %>
+            <% end %>
+        </ul>
+    </div>
+    </div>        
+</div>

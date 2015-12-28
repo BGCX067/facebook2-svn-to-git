@@ -1,0 +1,169 @@
+﻿#groupLeft {
+	float: left;
+	width: 240px;
+	margin-right: 5px;	
+}
+#groupRight {
+	float: right;
+	width: 400px;
+	padding-left: 5px;
+	border-left: 1px #dddddd solid;
+}
+#groupPortrait img {
+	width: 240px;
+}
+
+.columnHeader {
+	border-top: 1px #999999 solid;
+	border-bottom: 1px #dddddd solid;
+	background-color: #eeeeee;
+}
+/*个人名称*/
+#groupName {
+	float: left;
+	COLOR: #3b5998;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 16px;
+	text-decoration: none;
+	font-weight: bold;
+}
+#groupCountry {
+	float: left;
+	COLOR: #333333;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	font-weight: bold;
+	text-decoration: none;
+	padding: 3px 0px 0px 30px;
+}
+/*个人档案*/
+#groupProfile {
+	margin-bottom: 5px;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	font-weight: normal;
+	color: #000000;
+}
+#groupProfile th {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	font-weight: normal;
+	color: #aaaaaa;
+	width: 55px;
+	text-align: right;
+	vertical-align: top;
+}
+/*圈子新闻*/
+#groupNews {
+	margin-bottom: 5px;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	font-weight: normal;
+	color: #000000;
+}
+#groupNews .groupNewsContent tbody th {
+	margin-bottom: 5px;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	font-weight: normal;
+	color: #000000;
+	padding-bottom:3px;
+	border-bottom: 1px #dddddd dashed;
+}
+#groupNews .groupNewsContent tbody td {
+	border-bottom: 1px #dddddd dashed;
+}
+#groupNews .groupNewsContent {
+	margin-bottom: 5px;
+	width:98%;
+	margin:2px;
+}
+#groupNews thead td {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 14px;
+	font-weight: bold;
+	color: #000000;
+	padding-top: 3px;
+	padding-bottom: 3px;
+	padding-left: 5px;
+	border-bottom: 1px #dddddd solid;
+}
+
+/*我的生命卷*/
+#groupLifebook {
+	margin-bottom:5px;
+}
+#groupLifebook .picList {
+	margin-left: 0px;	
+}
+#groupLifebook .picList li {
+	list-style: none;
+	float: left;
+	width: 64px;
+	display: block;
+	margin-left: 3px;
+	margin-bottom: 3px;
+	padding: 3px 3px 3px 3px;
+	border: 1px #dddddd solid;
+}
+#groupLifebook .picList li div {
+	width: 64px;
+	height: 80px;
+	overflow: hidden;
+}
+#groupLifebook .picList li p {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 10px;
+	font-weight: normal;
+	color: #666666;
+	width: 100%;
+	margin-top: 2px;
+}
+/*头：中间的日期，体：字，尾：图片*/
+#groupLifebook .lifebookList{
+	padding-bottom:5px;
+	border-bottom:1px #dddddd dashed;
+}
+#groupLifebook thead th {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	font-weight: bold;
+	color: #333333;
+}
+#groupLifebook tfoot td {
+	margin-bottom: 5px;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	font-weight: normal;
+	color: #666666;
+}
+/*我的朋友*/
+#groupFriend{
+	margin-bottom:5px;
+}
+#groupFriend #picList {
+	margin-left: 0px;
+}
+#groupFriend #picList li {
+	list-style: none;
+	float: left;
+	width: 64px;
+	display: block;
+	margin-left: 3px;
+	margin-bottom: 3px;
+	padding: 3px 3px 3px 3px;
+	border: 1px #dddddd solid;
+}
+#groupFriend #picList li div {
+	width: 64px;
+	height: 80px;
+	overflow: hidden;
+}
+.friendName{
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	font-weight: normal;
+	color: #666666;
+	width: 100%;
+	margin-top: 5px;
+}

@@ -1,0 +1,31 @@
+<%= form_tag({:action => :edit,:id=>@params[:id]} ,:multipart => true)%>
+<div id="form">	
+	<div class="subFormDesc">
+		在这里您可以修改圈子的基本信息。</div>
+
+	<table class="subForm" cellpadding="0" cellspacing="5">
+		<tr>
+			<th>圈子名字：</th>
+			<td><%= text_field "group", "name",:size=>50%></td>
+		</tr>
+		<tr>
+			<th>专 注 于：</th>
+			<td><%= text_field("group","interesting",:size=>50) %></td>
+		</tr>
+		<tr>
+			<th>圈子简介：</th>
+			<td><%=text_area("group","intro",:cols=>39,:rows=>5)%></td>
+		</tr>
+		<tr>
+			<th>圈子招牌：</th>
+			<td><%=file_field("group","portrait",:cols=>36,:rows=>5)%></td>
+		</tr>				
+	</table>
+	<div id="alertPanel"></div>
+	<table cellpadding="0" cellspacing="5" align="center">
+		<tr>
+			<td><%=submit_tag "修 改",:class=>"btn"%></td>
+		</tr>
+	</table>
+</div>
+<%= end_form_tag %>

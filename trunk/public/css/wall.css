@@ -1,0 +1,142 @@
+﻿/*我的墙壁*/
+#myWall {
+	margin-bottom: 5px;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	font-weight: normal;
+	color: #000000;
+}
+#myWall thead td {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 14px;
+	font-weight: bold;
+	color: #000000;
+	padding-top: 3px;
+	padding-bottom: 3px;
+	padding-left: 5px;
+	border-bottom: 1px #dddddd solid;
+}
+.wallPostForm{
+	margin-top:5px;
+	margin-bottom:5px;
+	padding-bottom:5px;
+	text-align:right;
+	vertical-align:middle;
+}
+.wallInfo{	
+	BORDER-BOTTOM: #d8dfea 1px solid;
+	vertical-align:top;
+}
+.wallInfo small{	
+	color:#999999;
+}
+.wallPost{
+	margin-top:5px;
+}
+.wallImage {
+	vertical-align:top;
+	width:50px;
+}
+.wallImage img{
+	vertical-align:top;
+	padding-left:5px;
+	padding-right:5px;
+	width:55px;
+}
+.wallHeader{
+	PADDING: 3px 5px 3px 5px;
+	BACKGROUND: #eeeeee;
+	BORDER-TOP: #999999 1px solid;
+	BORDER-BOTTOM: #dddddd 1px solid;
+}
+.wallHeader strong{
+	color:#999999;	
+}
+.wallQuote{
+	PADDING:5px 5px 5px 5px;
+	margin:5px 5px 5px 5px;
+	border:1px #dddddd solid;
+	background:#f9f9f9;
+}
+.wallQuote img
+{
+	PADDING:5px 5px 5px 5px;
+	border:1px #dddddd solid;
+}
+.wallQuoteFrom{
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	font-weight: normal;
+	color: #666666;
+	padding-bottom:3px;
+}
+.wallQuoteContent{
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	font-weight: normal;
+	color: #333333;
+	margin-top:3px;
+}
+.wallQuoteDisplay{
+	PADDING:5px 5px 5px 5px;
+	border:1px #dddddd solid;
+	background:#f9f9f9;
+	text-align:left;
+}
+.wallQuoteFromDisplay{
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	font-weight: normal;
+	color: #666666;
+	padding-bottom:3px;
+	text-align:left;
+}
+.wallQuoteContentDisplay{
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	font-weight: normal;
+	color: #000000;
+	text-align:left;
+}
+.wallText{
+	PADDING-RIGHT: 5px;
+	PADDING-LEFT: 5px;
+	PADDING-BOTTOM: 5px;
+	PADDING-TOP: 5px;
+	word-break:break-all;
+}
+.wallActions{
+	PADDING-RIGHT: 5px;
+	PADDING-LEFT: 5px;
+	PADDING-BOTTOM: 3px;	
+	PADDING-TOP: 3px;	
+}
+#wallAlertPanel{
+	background:#FFFBE2;
+	border:1px #ffe222 solid;
+	color:black;
+	padding:10px 10px 10px 10px;
+	font-weight: bold;
+	text-align:left;
+}
+.wallCommentQuote
+{
+	width:100px;	
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	font-weight: normal;
+	vertical-align:top;
+}
+.wallCommentQuoteContent
+{
+	margin-left:10px;
+	color:#666666;
+	text-align:center;
+	font-size:10px;
+}
+.wallCommentQuoteContent img
+{
+	width:90px;
+	PADDING:5px 5px 5px 5px;
+	border:1px #dddddd solid;
+}

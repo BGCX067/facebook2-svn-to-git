@@ -1,0 +1,13 @@
+<div class="alertPanel">
+    <%= @alertMessage %>    
+    <%= error_message_on(:user,:username) %>
+    <%= error_message_on(:user,:password) %>
+    <%= error_message_on(:user,:email) %>
+    <%= error_message_on(:userDetail,:realname) %>
+    
+    <%= error_message_on(:group,:name) %>
+    <%= error_message_on(:group,:interesting) %>
+    <%= error_message_on(:group,:intro) %>
+    
+    <%= error_message_on(:message,:content) %>
+</div>

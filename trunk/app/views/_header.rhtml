@@ -1,0 +1,45 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Language" content="zh-cn" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Facebook2 | Welcome to Facebook2!</title>
+    <%= javascript_include_tag "prototype","effects","controls","dragdrop" %>
+    <!--[if lte IE 6]>
+    	<link rel="stylesheet" type="text/css" href="/css/baseIE6.css" />
+    <![endif]-->
+    <!--[if !lte IE 6]>
+    	<link rel="stylesheet" type="text/css" href="/css/baseIE7.css" />
+    <![endif]-->
+		
+    <!--[if lte IE 6]>
+    	<link rel="stylesheet" type="text/css" href="/css/squareIE6.css" />
+    <![endif]-->
+    <!--[if !lte IE 6]>
+    	<link rel="stylesheet" type="text/css" href="/css/squareIE7.css" />
+    <![endif]-->
+<% if @CSSs%>
+    <% for @CSS in @CSSs%>
+    <link rel="stylesheet" type="text/css" href="/css/<%=@CSS%>" />
+    <% end%>
+<% end%>
+    <link rel="shortcut icon" href="/img/favicon.ico" />
+</head>
+<body>
+    <div id="lifebook">
+        <div id="header">
+            <div id="logo">
+                <img src="/img/logo.png" alt="Welcome to Facebook2!" />
+            </div>
+            <% if session[:user] %>
+            <div id="topMenu">
+	            <ul>
+	            	<li><a href="/home/index/<%=session[:user].id.to_s %>">主 页</a></li>
+	            	<li><a href="/friend/list/<%=session[:user].id.to_s %>">朋 友</a></li>
+	            	<li><a href="/group/list/<%=session[:user].id.to_s %>">圈 子</a></li>
+	            	<li><a href="/user/account/<%=session[:user].id.to_s %>">设 置</a></li>
+	            	<li><a href="/user/logout">注 销</a></li>
+	            </ul>
+            </div>
+            <% end %>
+        </div>

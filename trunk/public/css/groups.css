@@ -1,0 +1,167 @@
+﻿.columnHeader {
+	border-top: 1px #999999 solid;
+	border-bottom: 1px #dddddd solid;
+	background-color: #eeeeee;
+}
+/*控制面板*/
+#myControlPanel {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	font-weight: normal;
+	color: #000000;
+}
+#myControlPanel thead td {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 14px;
+	font-weight: bold;
+	color: #000000;
+	padding-top: 3px;
+	padding-bottom: 3px;
+	padding-left: 5px;
+	border-bottom: 1px #dddddd solid;
+}
+#myControlPanel #controlPanelBtn{
+	margin-left:0px;
+}
+#myControlPanel #controlPanelBtn li{
+	float:left;	
+	width:112px;
+	margin:0px 3px 3px 0px;
+	text-align:center;
+	list-style-type:none;
+}
+#myControlPanel #controlPanelBtn a {
+	BACKGROUND: #3b5998;
+	COLOR: white;
+	TEXT-DECORATION: none;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	DISPLAY: block;
+	PADDING: 5px 5px 5px 5px;
+	border:1px #eeeeee solid;
+}
+#myControlPanel #controlPanelBtn a:hover {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	color: #000080;
+	text-decoration: none;
+	BACKGROUND: #ffffff;
+	border:1px #666666 solid;
+}
+/*我的好友*/
+#groupList {
+
+}
+.group{
+	margin-top:5px;
+	border:1px #dddddd solid;
+}
+.groupImage{
+	vertical-align:top;
+	padding:5px 5px 5px 5px;
+}
+.groupImage img{
+	width:150px;
+}
+
+.groupContent{
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	font-weight: normal;
+	color: #666666;	
+	vertical-align:top;
+	width:365px;
+}
+.groupName{
+	font-weight:bold;
+	padding:8px 5px 0px 5px;	
+}
+.groupInfo{
+	vertical-align:top;
+	padding:5px 5px 5px 5px;
+}
+.groupIntro{
+	border-top:1px #dddddd dashed;
+	PADDING:5px 0px 5px 5px;
+	line-height:18px;
+}
+/*好友新闻*/
+.groupNews {
+	PADDING:6px 0px 5px 5px;
+}
+.groupNews table {
+	margin-top:3px;
+}
+.groupNews th {
+	font-weight: normal;
+}
+.groupLifebook {
+	border-top:1px #dddddd dashed;
+	PADDING:5px 0px 5px 5px;
+}
+.groupLifebook ul{
+	list-style-type:none;
+	width:100%;
+	margin:3px 0px 0px 0px;
+}
+.groupLifebook li{
+	float:left;
+	margin-right:2px;
+	margin-bottom:2px;
+}
+.groupLifebook a {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	color: #000080;	
+	BACKGROUND: #ffffff;
+	text-decoration: none;
+	
+	PADDING: 2px 5px 2px 5px;
+	
+	DISPLAY: block;	
+	border:1px #dddddd solid;
+	white-space:nowrap;
+}
+.groupLifebook a:hover {	
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;	
+	COLOR: white;
+	BACKGROUND: #3b5998;
+	TEXT-DECORATION: none;
+	
+	DISPLAY: block;	
+	PADDING: 2px 5px 2px 5px;	
+}
+
+.groupActionColumn{
+	width:100px;
+	vertical-align:top;
+	PADDING:5px 5px 5px 5px;
+}
+.groupActionList{
+	width:100px;
+	list-style-type:none;
+	margin:0px 0px 0px 0px;	
+}
+.groupActionList a {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	color: #000080;	
+	BACKGROUND: #ffffff;
+	text-decoration: none;
+	
+	PADDING: 6px 5px 5px 5px;
+	DISPLAY: block;	
+	border-bottom:1px #dddddd solid;
+	width:100px;
+}
+.groupActionList a:hover {	
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;	
+	COLOR: white;
+	BACKGROUND: #3b5998;
+	TEXT-DECORATION: none;
+	
+	DISPLAY: block;	
+	PADDING: 6px 5px 5px 5px;	
+}

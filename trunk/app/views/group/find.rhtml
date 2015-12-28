@@ -1,0 +1,65 @@
+<%= form_tag(:action => :findGroup) %>
+<table class="group" cellspacing="0" cellpadding="0" width="100%" border="0">
+    <tr>
+        <td class="groupImage">
+            <%= text_field("group","keyWord",:size=>10) %>
+            <%= submit_tag "查找" , :class=>"btn"%>
+        </td>
+    </tr>
+</table>
+<%= end_form_tag %>
+<div class="foundContent">
+    <%for group in @groups%>
+    <table class="group" cellspacing="0" width="100%" border="0">
+        <tr>
+            <td class="groupImage">
+                <a href="/group/home/<%=group.id%>">
+                <% if group.portrait!="" %>
+                <img src="/uploads/groupPortrait/<%=group.portrait%>" alt="<%=group.name%>" border="0" />
+                <% else %>
+                <img src="/img/default_portrait.jpg" alt="<%=group.name %>" border="0"/>
+                <% end %>
+                </a>
+            </td>
+            <td valign="top">
+                <div class="groupContent">
+                    <div class="groupName">
+                        <a href="/group/home/<%=group.id%>"><%=group.name%></a>
+                        <% if isCreatorByGroup(group)%>
+                        我创建的
+                        <% elsif isJoinedGroup(group)%>
+                        我已加入的
+                        <% end %>
+                    </div>
+                    <div class="groupInfo">
+                        会员：<%=(group.members.count+1)%> 人 我们关注：<%=group.interesting%>
+                    </div>
+                    <div class="groupIntro">
+                        介绍：<%=group.intro%></div>
+                </div>
+            </td>
+            <td class="groupActionColumn">
+                <ul class="groupActionList">
+                    <li><a href="/group/home/<%=group.id%>">进入玩玩</a></li>
+                    <% if not isJoinedGroup(group) and not isCreatorByGroup(group)%>
+                    <li><a href="/group/join/<%=session[:user].id%>?group_id=<%=group.id%>">立刻加入</a></li>
+                    <% end %>
+                </ul>
+            </td>
+        </tr>
+    </table>
+    <% end %>
+    <div class="pager">
+        <ul>
+            <% for page in @group_pages %>
+                <%=
+                if page==@group_pages.current()
+                    "<li class='currentPage'>#{page.number}</li>"
+                else
+                    "<li><a href = '?page=#{page.number}' >#{page.number}</a></li>"
+                end
+                %>
+            <% end %>
+        </ul>
+    </div>
+</div>
